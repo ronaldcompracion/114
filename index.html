@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCIS CONNECT</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-2 col-md-auto text-center logo ps-0 ms-n2">
+            <img
+              src="\images\logo\logo.png"
+              alt="CCIS Logo"
+              class="img-fluid mt-1"
+              style="height: 44px"
+            />
+          </div>
+
+          <!-- Text Column -->
+          <div class="col-5 col-md text-start ps-0 ms-n2">
+            <h2 class="mb-2 title">CCIS CONNECT</h2>
+            <p class="mb-0 small">
+              College of Computing and Information Sciences
+            </p>
+          </div>
+
+          <div class="col col-md-auto text-end search">
+            <form class="d-flex position-relative">
+              <input
+                class="form-control rounded-pill extended-search"
+                type="search"
+                aria-label="Search"
+                style="padding-right: 35px"
+              />
+              <span
+                class="position-absolute end-0 top-50 translate-middle-y me-3"
+              >
+                <i class="bi bi-search"></i>
+                <!-- Bootstrap icon class for a search icon -->
+              </span>
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- Navbar -->
+
+    <!-- Navigation Bar -->
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+      <div class="container-fluid">
+        <div class="row w-100">
+          <div class="col-3 p-0">
+            <a class="nav-link" href="#">
+              <i class="fas fa-newspaper"></i> <span>News</span>
+            </a>
+          </div>
+          <div class="col-3 p-0">
+            <a class="nav-link" href="#">
+              <i class="fas fa-bullhorn"></i> <span>Announcement</span>
+            </a>
+          </div>
+          <div class="col-3 p-0">
+            <a class="nav-link" href="#">
+              <i class="fas fa-search"></i> <span>Search</span>
+            </a>
+          </div>
+          <div class="col-3 p-0">
+            <a class="nav-link" href="#">
+              <i class="fas fa-cog"></i> <span>Settings</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Start Carousel -->
+    <div class="carousel-container">
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide pt-2"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="images/Slides/1.png"
+              class="d-block w-100"
+              alt="First slide"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="images/Slides/1.png"
+              class="d-block w-100"
+              alt="Second slide"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="images/Slides/1.png"
+              class="d-block w-100"
+              alt="Third slide"
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <!-- End Carousel -->
+
+    <!-- Content Cards -->
+    <div class="container">
+      <!-- First Card -->
+      <div class="col-md-4 p-3">
+        <div class="card">
+          <!-- Profile -->
+          <div class="container mt-2">
+            <div class="profile-container">
+              <div class="profilepic">
+                <img
+                  src="images/Profile/Profile Pic.png"
+                  alt="Profile Picture"
+                  width="50px"
+                />
+              </div>
+              <div class="profile-info text-start">
+                <p class="user_name mt-1">
+                  College of Computing and Information Sciences - Caraga State
+                  University
+                </p>
+                <small class="date">October 31, 2024</small>
+              </div>
+            </div>
+          </div>
+          <!--  End Profile -->
+          <div class="container">
+            <div class="row pt-2 pb-">
+              <small class="text-secondary title"
+                >𝑨𝒄𝒉𝒊𝒆𝒗𝒆𝒎𝒆𝒏𝒕 𝑼𝒏𝒍𝒐𝒄𝒌𝒆𝒅 | 𝟐𝐧𝐝 𝐘𝐞𝐚𝐫 𝐁𝐒𝐈𝐓 𝐒𝐭𝐮𝐝𝐞𝐧𝐭 𝐟𝐫𝐨𝐦 𝐂𝐒𝐔 𝐐𝐮𝐚𝐥𝐢𝐟𝐢𝐞𝐬
+                𝐟𝐨𝐫 𝐭𝐡𝐞 𝐇𝐚𝐜𝐤𝟒𝐆𝐨𝐯 𝐈𝐧𝐭𝐞𝐫𝐧𝐚𝐭𝐢𝐨𝐧𝐚𝐥 𝐂𝐨𝐦𝐩𝐞𝐭𝐢𝐭𝐢𝐨𝐧</small
+              >
+            </div>
+            <div class="row g-0">
+              <div class="col-8 p-1">
+                <img
+                  src="images/News Feed/1.jpg"
+                  class="img-fluid w-100 h-100"
+                  alt="CCIS Achievement"
+                />
+              </div>
+              <div class="col-4 p-1">
+                <img
+                  src="images/News Feed/2.jpg"
+                  class="img-fluid w-100"
+                  alt="CCIS Achievement"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body text-secondary">
+            <p class="card-text cardtext">
+              <span class="preview-text">
+                It was a proud moment for our BSIT 2nd year student,
+                <b>Mr. Drandreb B. Reyes</b> as his wildcard team, “Captcha”
+                composed of highest individual score from other regions, just
+                clinched
+                <b
+                  >2nd place in this year's 2023 Hack4Gov National
+                  Competition</b
+                >. The competition was held last October 16, 2023 in Manila
+                Grand
+              </span>
+              <span class="more-text" style="display: none">
+                Opera Hotel, Santa Cruz Manila. Team “AdDU” from Ateneo de Davao
+                University hailed as the Champion of this year's 2023 Hack4Gov
+                National Competition. Last August 2023, Mr. Drandreb B. Reyes,
+                together with his teammates “Kr4ken” of Caraga State University
+                bagged 1st runner-up in the Hack4Gov Capture the Flag Regional
+                Qualifying Round, with FSUU team winning the Hack4Gov
+                competition. During the competition, Mr. Drandreb B. Reyes
+                achieved the highest individual score and earned a spot in the
+                wildcard representing Mindanao Region. Mr. Drandreb B. Reyes
+                will be one of the representatives of the Philippines in the
+                International Competition as he scored among the highest in the
+                2023 Hack4Gov National Competition, mentored by Mr. John Michael
+                F. Cutamora.
+              </span>
+              <button class="toggle-btn btn btn-link p-0">...See More</button>
+            </p>
+          </div>
+          <!-- Reaction Area -->
+          <div class="row">
+            <div class="container text-secondary">
+              <hr
+                style="
+                  width: 89%;
+                  border-color: #ccc;
+                  border-width: 2px;
+                  margin: 0 auto;
+                "
+              />
+            </div>
+
+            <div class="col-4 interaction">
+              <div class="reaction-container text-end position-relative">
+                <!-- Reaction Emojis Container -->
+                <div id="reactionEmojis" class="reaction-emojis">
+                  <span class="emoji" data-reaction="👍">👍</span>
+                  <span class="emoji" data-reaction="❤️">❤️</span>
+                  <span class="emoji" data-reaction="😂">😂</span>
+                  <span class="emoji" data-reaction="😮">😮</span>
+                  <span class="emoji" data-reaction="😢">😢</span>
+                  <span class="emoji" data-reaction="👏">👏</span>
+                </div>
+
+                <!-- Like Button -->
+                <button id="likeButton" class="reaction-btn btn btn-link">
+                  <span id="selectedReaction">Like</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="col-3"></div>
+            <div class="col-5 text-secondary pt-2 interaction">
+              Add to Favorites
+            </div>
+          </div>
+
+          <!-- End Reaction -->
+        </div>
+      </div>
+      <!-- End First Card -->
+
+      <!-- Second Card -->
+      <div class="col-md-4 p-3">
+        <div class="card">
+          <!-- Profile -->
+          <div class="container mt-2">
+            <div class="profile-container">
+              <div class="profilepic">
+                <img
+                  src="images/Profile/Profile Pic.png"
+                  alt="Profile Picture"
+                  width="50px"
+                />
+              </div>
+              <div class="profile-info text-start">
+                <p class="user_name mt-1">
+                  College of Computing and Information Sciences - Caraga State
+                  University
+                </p>
+                <small class="date">October 31, 2024</small>
+              </div>
+            </div>
+          </div>
+          <!--  End Profile -->
+          <div class="container">
+            <div class="row pt-2 pb-">
+              <small class="text-secondary title"
+                >𝐂𝐚𝐩𝐭𝐮𝐫𝐞 𝐭𝐡𝐞 𝐅𝐥𝐚𝐠 𝐇𝐚𝐜𝐤𝟒𝐆𝐨𝐯 𝐂𝐨𝐦𝐩𝐞𝐭𝐢𝐭𝐢𝐨𝐧 𝟐𝟎𝟐𝟒</small
+              >
+            </div>
+            <div class="row g-0">
+              <div class="col-8 p-1">
+                <img
+                  src="images/News Feed/3.jpg"
+                  class="img-fluid w-100 h-100"
+                  alt="CCIS Achievement"
+                />
+              </div>
+              <div class="col-4 p-1">
+                <img
+                  src="images/News Feed/4.jpg"
+                  class="img-fluid w-100 h-100"
+                  alt="CCIS Achievement"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body text-secondary">
+            <p class="card-text cardtext">
+              <span class="preview-text">
+                The CSU Team - CarSU CyberNinja, represented by four (4) CCIS
+                students and coached by Mr. John Michael Cutamora, was declared
+                CHAMPION in the DICT's regional Hack4Gov Competition 2024.
+                Participated by 13 teams and 52 students from various State
+                Universities and Colleges (SUCs) and Higher Education
+                Institutions (HEIs) in Caraga Region,...
+              </span>
+              <span class="more-text" style="display: none">
+                the event was held today, 23rd of August at the Almont Inland
+                Resort, Butuan City. The team will represent Caraga in the
+                national competitions to be held on October 2024.
+              </span>
+              <button class="toggle-btn btn btn-link p-0">See More</button>
+            </p>
+          </div>
+          <!-- Reaction Area -->
+          <div class="row">
+            <div class="container text-secondary">
+              <hr
+                style="
+                  width: 89%;
+                  border-color: #ccc;
+                  border-width: 2px;
+                  margin: 0 auto;
+                "
+              />
+            </div>
+
+            <div class="col-4 interaction">
+              <div class="reaction-container text-end position-relative">
+                <!-- Reaction Emojis Container -->
+                <div id="reactionEmojis" class="reaction-emojis">
+                  <span class="emoji" data-reaction="👍">👍</span>
+                  <span class="emoji" data-reaction="❤️">❤️</span>
+                  <span class="emoji" data-reaction="😂">😂</span>
+                  <span class="emoji" data-reaction="😮">😮</span>
+                  <span class="emoji" data-reaction="😢">😢</span>
+                  <span class="emoji" data-reaction="👏">👏</span>
+                </div>
+
+                <!-- Like Button -->
+                <button id="likeButton" class="reaction-btn btn btn-link">
+                  <span id="selectedReaction">Like</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="col-3"></div>
+            <div class="col-5 text-secondary pt-2 interaction">
+              Add to Favorites
+            </div>
+          </div>
+
+          <!-- End Reaction -->
+        </div>
+      </div>
+      <!-- End -->
+
+      <!-- Third Card -->
+      <div class="col-md-4 p-3">
+        <div class="card">
+          <!-- Profile -->
+          <div class="container mt-2">
+            <div class="profile-container">
+              <div class="profilepic">
+                <img
+                  src="images/Profile/Profile Pic.png"
+                  alt="Profile Picture"
+                  width="50px"
+                />
+              </div>
+              <div class="profile-info text-start">
+                <p class="user_name mt-1">
+                  College of Computing and Information Sciences - Caraga State
+                  University
+                </p>
+                <small class="date">October 31, 2024</small>
+              </div>
+            </div>
+          </div>
+          <!--  End Profile -->
+          <div class="container">
+            <div class="row pt-2 pb-">
+              <small class="text-secondary title"
+                >Celebrating Our Achievement! 🎉</small
+              >
+            </div>
+            <div class="row g-0">
+              <div class="col-8 p-1">
+                <img
+                  src="images/News Feed/8.jpg"
+                  class="img-fluid w-100 h-100"
+                  alt="CCIS Achievement"
+                />
+              </div>
+              <div class="col-4 p-1">
+                <img
+                  src="images/News Feed/9.jpg"
+                  class="img-fluid w-100 h-100"
+                  alt="CCIS Achievement"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body text-secondary">
+            <p class="card-text cardtext">
+              <span class="preview-text">
+                The College of Computing and Information Sciences (CCIS), Caraga
+                State University - Main Campus, proudly secured the Overall 3rd
+                Runner-Up position! A heartfelt thank you to everyone who made
+                this possible — our dedicated participants, coordinators,
+                working committee members, and the unwavering support of the
+                CCIS faculty and staff.
+              </span>
+              <span class="more-text" style="display: none">
+                Special thanks to the CSU College of Computing and Information
+                Sciences Local Student Government and my co-officers for
+                standing strong through the challenges. Together, we will
+                continue to learn, grow, and face even bigger challenges ahead.
+                Here’s to more events that will elevate the talents and skills
+                of our CCIS students! 🫶🏼
+              </span>
+              <button class="toggle-btn btn btn-link p-0">...See More</button>
+            </p>
+          </div>
+          <!-- Reaction Area -->
+          <div class="row">
+            <div class="container text-secondary">
+              <hr
+                style="
+                  width: 89%;
+                  border-color: #ccc;
+                  border-width: 2px;
+                  margin: 0 auto;
+                "
+              />
+            </div>
+
+            <div class="col-4 interaction">
+              <div class="reaction-container text-end position-relative">
+                <!-- Reaction Emojis Container -->
+                <div id="reactionEmojis" class="reaction-emojis">
+                  <span class="emoji" data-reaction="👍">👍</span>
+                  <span class="emoji" data-reaction="❤️">❤️</span>
+                  <span class="emoji" data-reaction="😂">😂</span>
+                  <span class="emoji" data-reaction="😮">😮</span>
+                  <span class="emoji" data-reaction="😢">😢</span>
+                  <span class="emoji" data-reaction="👏">👏</span>
+                </div>
+
+                <!-- Like Button -->
+                <button id="likeButton" class="reaction-btn btn btn-link">
+                  <span id="selectedReaction">Like</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="col-3"></div>
+            <div class="col-5 text-secondary pt-2 interaction">
+              Add to Favorites
+            </div>
+          </div>
+
+          <!-- End Reaction -->
+        </div>
+      </div>
+      <!-- End Third Card -->
+
+      <div class="col-md-4 p-3">
+        <div class="card">
+          <img
+            src="path/to/image3.jpg"
+            class="card-img-top"
+            alt="Hack4Gov Competition"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Golden Paddlers Capture Championship</h5>
+            <p class="card-text">
+              The Golden Paddlers captured the championship flag at the Hack4Gov
+              Competition 2024.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- </div> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- JS -->
+    <script src="js/newsfeed.js"></script>
+
+    <!-- JS NAVBAR -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

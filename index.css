@@ -1,0 +1,243 @@
+h2.title {
+  color: rgb(231, 231, 231);
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: -18px;
+}
+p.small {
+  color: rgb(231, 231, 231);
+  font-size: 8px;
+  letter-spacing: -0.2px;
+
+  margin-left: -18px;
+  font-family: sans-serif;
+}
+.header {
+  text-align: center;
+  background-color: #ed5500;
+}
+/* .article {
+  margin-bottom: 30px;
+} */
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+div.logo {
+  margin-left: -10px;
+}
+.extended-search {
+  width: 200%; /* Ensures it fills the parent container */
+  max-width: 400px; /* Optional: Set a max width for control */
+  padding-left: 15px; /* Adds some padding for better aesthetics */
+  padding-right: 15px;
+}
+
+.search {
+  margin-left: -20px;
+}
+
+.user_name {
+  font-size: 11px; /* Adjust the size as needed */
+  font-weight: bold; /* Optional: add bold for emphasis */
+  margin-bottom: 0; /* Remove bottom margin to prevent spacing */
+  opacity: 60%;
+  line-height: 15px;
+}
+
+small.date {
+  display: block; /* Ensures it goes to the next line */
+  opacity: 60%;
+  font-size: 8px; /* Adjust the size to make it more readable */
+  margin-top: 2px; /* Adds a small space between the name and date */
+  margin-left: 0; /* Reset margin if needed */
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.profilepic img {
+  border-radius: 50%;
+}
+.profile-info {
+  margin-left: 15px;
+}
+.user_name {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+.date {
+  color: gray;
+}
+
+.title {
+  font-size: 11px;
+  text-align: justify;
+}
+
+.cardtext {
+  font-size: 12px;
+  text-align: justify;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* STICKY */
+/* Ensure the header stays at the top */
+header.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Make the carousel sticky below the header */
+/* .carousel {
+  position: sticky;
+  top: 60px; 
+  z-index: 999;
+  background-color: #fff; 
+} */
+
+/* search */
+.extended-search {
+  padding-right: 35px; /* Adjust padding to make space for the icon */
+  border: 2px solid #f25c2a; /* Adjust the border color to your desired color */
+  background-color: white;
+  color: #333;
+}
+
+.search .position-absolute i {
+  font-size: 1.2em; /* Adjust icon size as needed */
+  color: #333; /* Icon color */
+}
+
+/* card */
+.card {
+  background-color: #fffaf6 !important;
+  border: 1px solid #fffaf6 !important;
+}
+
+
+/* See More */
+.toggle-btn {
+  color: rgba(0, 0, 0, 0.493) !important; /* Black with 60% opacity */
+  text-decoration: none !important;
+  font-size: 12px !important;
+  margin-bottom: 4px !important;
+  font-weight: bold !important;
+}
+
+.toggle-btn:hover {
+  color: rgba(0, 0, 0, 0.534) !important; /* Slightly darker on hover */
+}
+
+
+/* Reaction */
+.reaction-container {
+  position: relative;
+}
+
+.reaction-emojis {
+  display: none;
+  position: absolute;
+  bottom: 40px;
+  right: 0;
+  background: #fff6f6;
+  padding: 5px 10px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+}
+
+.reaction-emojis .emoji {
+  font-size: 24px;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: transform 0.2s;
+}
+
+.reaction-emojis .emoji:hover {
+  transform: scale(1.2);
+}
+
+.reaction-btn {
+  font-size: 16px;
+  color: black;
+  opacity: 0.6;
+  text-decoration: none;
+}
+/*  */
+.reaction-container {
+  position: relative;
+}
+
+.reaction-emojis {
+  position: absolute;
+  left: 170%;
+  bottom: 100%;
+  margin-bottom: 10px;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-around;
+  background: rgb(255, 255, 255);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  width: fit-content; /* Allow container to fit the content width */
+  min-width: 160px;
+  max-width: 90vw;
+  white-space: nowrap; /* Prevents emojis from wrapping to a new line */
+  overflow-x: auto;
+  display: none;
+}
+
+.emoji {
+  padding: 5px;
+  cursor: pointer;
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .emoji {
+    font-size: 1.2rem;
+  }
+}
+
+.interaction {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  opacity: 80%;
+}
+
+/* NAVBAR */
+
+.nav-item {
+    text-align: center;
+    flex: 1;
+}
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+.nav-link i {
+    font-size: 20px; /* Adjusted icon size */
+}
+.nav-link span {
+    font-size: 14px; /* Adjusted text size */
+}
+@media (max-width: 767px) {
+    .nav-link i {
+        font-size: 18px; /* Smaller icon size for mobile */
+    }
+    .nav-link span {
+        font-size: 12px; /* Smaller text size for mobile */
+    }
+}
