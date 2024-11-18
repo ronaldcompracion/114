@@ -120,7 +120,6 @@ header.header {
   border: 1px solid #fffaf6 !important;
 }
 
-
 /* See More */
 .toggle-btn {
   color: rgba(0, 0, 0, 0.493) !important; /* Black with 60% opacity */
@@ -133,7 +132,6 @@ header.header {
 .toggle-btn:hover {
   color: rgba(0, 0, 0, 0.534) !important; /* Slightly darker on hover */
 }
-
 
 /* Reaction */
 .reaction-container {
@@ -164,11 +162,85 @@ header.header {
 }
 
 .reaction-btn {
-  font-size: 16px;
-  color: black;
-  opacity: 0.6;
+  font-size: 12px; /* Adjusted font size */
+  color: black !important; /* Ensure the text color is black */
+  opacity: 50px;
   text-decoration: none;
+  display: flex !important; /* Override inline-block to flex with !important */
+  align-items: center;
+  flex-direction: column; /* Ensure text below icon */
 }
+
+.reaction-btn i {
+  margin-bottom: 5px; /* Space between icon and text */
+  opacity: 0.7;
+}
+
+.reaction-btn span {
+  font-size: 10px; /* Ensure the font size is applied */
+  color: black !important; /* Ensure the text color is black */
+}
+
+#selectedReaction {
+  font-size: 10px; /* Ensure the font size is applied */
+  color: black !important; /* Ensure the text color is black */
+}
+
+/* Icon styling and interaction */
+.interaction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px; /* Adjusted font size */
+  flex-direction: row; /* Place text beside icon by default */
+}
+
+.interaction-item {
+  display: flex;
+  flex-direction: column; /* Ensure text below icon */
+  align-items: center;
+}
+
+.interaction-item i {
+  font-size: 18px; /* Adjust size for consistency */
+  margin-bottom: 5px; /* Space between icon and text */
+  opacity: 0.6; /* Initial opacity */
+  transition: opacity 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.interaction:hover i {
+  color: #EA8934; /* Highlight color */
+  opacity: 1; /* Full opacity on hover */
+}
+
+.text-secondary {
+  color: #6c757d !important;
+}
+
+/* Media Query for Mobile Screens */
+@media (max-width: 768px) {
+  .reaction-btn,
+  .interaction-item {
+    flex-direction: column; /* Place text below icon on mobile */
+  }
+
+  .interaction-item i {
+    margin-bottom: 5px; /* Adjust spacing between icon and text on mobile */
+    margin-right: 0; /* Remove right margin */
+  }
+}
+
+.pt-2 {
+  padding-top: 0 !important;
+}
+
+.interaction-item,
+.span {
+  font-size: 10px; /* Consistent font size */
+  color: black !important; /* Ensure the text color is black */
+}
+
+
 /*  */
 .reaction-container {
   position: relative;
@@ -176,7 +248,8 @@ header.header {
 
 .reaction-emojis {
   position: absolute;
-  left: 170%;
+  left: 150%;
+  margin-left: 66px !important;
   bottom: 100%;
   margin-bottom: 10px;
   transform: translateX(-50%);
@@ -216,28 +289,147 @@ header.header {
 }
 
 /* NAVBAR */
+/* General reset for row and column */
+.row {
+  --bs-gutter-x: 0 !important; /* Disable horizontal gutters */
+}
 
-.nav-item {
-    text-align: center;
-    flex: 1;
+.col-3 {
+  padding: 0; /* Remove padding from columns */
+  display: flex; /* Ensure columns are flex containers */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+/* Align icons and text in the center */
 .nav-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-decoration: none; /* Remove underline */
+  width: 100%; /* Ensure nav-link takes full width */
+  padding: 5px 0; /* Adjust spacing */
+  color: inherit; /* Ensure color inherits */
 }
+
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.active {
+  color: #ea8934; /* Highlight text and icons */
+}
+
+/* Adjust opacity on icons when not active */
 .nav-link i {
-    font-size: 20px; /* Adjusted icon size */
+  font-size: 24px; /* Adjust size for consistency */
+  margin-bottom: 4px; /* Space between icon and text */
+  opacity: 0.5; /* Initial opacity */
+  transition: opacity 0.3s ease; /* Smooth transition */
 }
+
+.nav-link:hover i,
+.nav-link:focus i,
+.nav-link.active i {
+  opacity: 1; /* Full opacity when active */
+}
+
+/* Text styling */
 .nav-link span {
-    font-size: 14px; /* Adjusted text size */
+  font-size: 12px; /* Adjust text size */
+  text-align: center; /* Center text under icon */
+  opacity: 0.5; /* Initial opacity */
 }
-@media (max-width: 767px) {
-    .nav-link i {
-        font-size: 18px; /* Smaller icon size for mobile */
-    }
-    .nav-link span {
-        font-size: 12px; /* Smaller text size for mobile */
-    }
+
+/* Fix alignment on smaller screens */
+@media (max-width: 768px) {
+  .nav-link i {
+    font-size: 20px;
+  }
+
+  .nav-link span {
+    font-size: 10px;
+  }
 }
+
+.navbar.fixed-bottom .container-fluid {
+  padding-right: 0; /* Remove right padding */
+  padding-left: 0; /* Remove left padding */
+}
+
+.asq {
+  margin-left: -15px;
+}
+i,
+.fas {
+  opacity: 10%;
+}
+
+
+/* COMMENT */
+
+/* General Styles */
+.comment-section {
+  font-size: 0.875rem; /* Small font size for comments */
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.comment-text {
+  margin-bottom: 0;
+  font-size: 0.85rem; /* Consistent font size for comments */
+  color: #555; /* Subtle text color */
+}
+
+.small-input {
+  font-size: 0.85rem; /* Smaller text for input field */
+  border-radius: 10px; /* Match rounded look with comments */
+  border: 1px solid #ccc; /* Subtle border */
+  padding: 8px; /* Add some padding for better UX */
+}
+
+.small-input:focus {
+  outline: none;
+  border-color: #e98935; /* Match the post button color */
+  box-shadow: 0 0 5px rgba(233, 137, 53, 0.5); /* Subtle glow */
+}
+
+/* Post Button Styling */
+.post-btn-custom {
+  background-color: #E98935 !important; /* Orange background */
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-btn-custom i {
+  color: rgb(255, 255, 255) !important; /* White icon */
+  opacity: 100%;
+}
+
+.post-btn-custom:hover {
+  background-color: #D77A2D !important; /* Darker orange */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Username */
+#user_name {
+  font-size: 12px;
+  opacity: 80%;
+}
+
+/* Comment Container */
+.comment {
+  font-size: 0.85rem; /* Consistent font size */
+  padding: 0.5rem 0; /* Spacing between comments */
+  border-bottom: 1px solid #e6e6e6; /* Add separation */
+}
+
