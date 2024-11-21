@@ -75,7 +75,7 @@ function renderAnnouncements(announcements, containerId, tableName) {
         </button>
       </div>
       <div class="row pb-1">
-        <small class="pl-5 ml-1" id="date"><b>Posted: </b>${announcement.date}</small>
+        <small class="pl-5 ml-2" id="date"><b>Posted: </b>${announcement.date}</small>
       </div>
     `;
 
@@ -83,7 +83,7 @@ function renderAnnouncements(announcements, containerId, tableName) {
     announcementContainer.appendChild(announcementElement);
   });
 
-  // Add event listener for the check buttons to toggle active state and modal
+  // Add event listener for the check buttons to toggle active state and show calendar modal
   announcementContainer.addEventListener("click", function (event) {
     if (event.target.closest(".check-btn")) {
       const button = event.target.closest(".check-btn");
@@ -111,28 +111,60 @@ function renderAnnouncements(announcements, containerId, tableName) {
       const announcementDate = announcementElement.querySelector(".clickable-area").getAttribute("data-date");
       const tableName = announcementElement.querySelector(".clickable-area").getAttribute("data-table");
 
-      // Trigger the modal to show
-      showModal(announcementId, announcementTitle, announcementDate, tableName);
+      // Trigger the "Add to Calendar" modal to show
+      showAddToCalendarModal(announcementId, announcementTitle, announcementDate, tableName);
+    }
+
+    // Show the modal with announcement details when clicking on the clickable area
+    if (event.target.closest(".clickable-area")) {
+      const title = event.target.closest(".clickable-area").getAttribute("data-title");
+      const description = event.target.closest(".clickable-area").getAttribute("data-description");
+      const date = event.target.closest(".clickable-area").getAttribute("data-date");
+      const id = event.target.closest(".clickable-area").getAttribute("data-id");
+
+      // Populate the announcement modal with the announcement data
+      showAnnouncementModal(id, title, description, date);
     }
   });
 
-  // Function to show the modal with the announcement data
-  function showModal(id, title, date, tableName) {
+  // Function to show the "Add to Calendar" modal
+  function showAddToCalendarModal(id, title, date, tableName) {
+    // Set title and date in the "Add to Calendar" modal
     document.getElementById("modal-title").innerText = title;
     document.getElementById("modal-date").innerText = `Posted: ${date}`;
-  
-    // Prefill the date input with the selected date
-    document.getElementById("modal-date-input").value = date; // This should now work
-  
-    // Store the announcement ID and table name in the modal for later use
-    document.getElementById("saveButton").setAttribute("data-id", id);
-    document.getElementById("saveButton").setAttribute("data-table", tableName);
-  
+    
+    // Prefill the date input with the selected date for calendar
+    document.getElementById("modal-date-input").value = date;
+
+    // Store the announcement ID and table name for later use (e.g., saving)
+    const saveButton = document.getElementById("saveButton");
+    saveButton.setAttribute("data-id", id);
+    saveButton.setAttribute("data-table", tableName);
+
     // Show the modal
     $("#addToCalendarModal").modal("show");
   }
-  
+
+  // Function to show the announcement modal with details
+  function showAnnouncementModal(id, title, description, date) {
+    // Populate the modal with the announcement details
+    document.getElementById("modal-title").innerText = title;
+    document.getElementById("modal-description").innerText = description;
+    document.getElementById("modal-date").innerText = `Posted: ${date}`;
+
+    // Show the modal overlay with the announcement details
+    document.querySelector(".modal-overlay").classList.remove("hidden");
+
+    // Optionally store the announcement ID for later use
+    // document.getElementById("saveButton").setAttribute("data-id", id);
+  }
+
+  // Hide the announcement modal when clicking the close button
+  document.querySelector(".close-btn").addEventListener("click", () => {
+    document.querySelector(".modal-overlay").classList.add("hidden");
+  });
 }
+
 
 // Save the announcement to the calendar
 async function saveToCalendar() {
@@ -170,7 +202,7 @@ async function saveToCalendar() {
 
     if (error) throw error;
 
-    alert("Saved successfully to the calendar!");
+    // alert("Saved successfully to the calendar!");
 
     // Close the modal after saving
     $("#addToCalendarModal").modal("hide");
@@ -193,3 +225,73 @@ document.querySelector(".close").addEventListener("click", () => {
 fetchAnnouncements("Pinned", "pinned-container");
 fetchAnnouncements("New", "new-container");
 fetchAnnouncements("Old", "old-container");
+
+
+// MODAL SURVEY
+
+// Get modal elements
+const surveyIcon = document.getElementById('surveyIcon');
+const surveyModal = document.getElementById('surveyModal');
+const closeModal = document.getElementById('closeModal');
+
+// Open modal
+surveyIcon.addEventListener('click', () => {
+    surveyModal.style.display = 'block';
+});
+
+// Close modal
+closeModal.addEventListener('click', () => {
+    surveyModal.style.display = 'none';
+});
+
+// Close modal when clicking outside the content
+surveyModal.addEventListener('click', (e) => {
+    if (e.target === surveyModal) {
+        surveyModal.style.display = 'none';
+    }
+});
+
+// Handle poll voting
+document.querySelectorAll('.poll-option').forEach(option => {
+  // Store the initial value for each poll option in data attributes
+  let initialValue = parseInt(option.dataset.initial); // We use dataset to keep track of the initial vote count
+  let currentValue = initialValue;
+  
+  const progressBar = option.querySelector('.custom-progress-bar');
+  
+  // Set initial value
+  progressBar.style.width = initialValue + '%';
+  progressBar.textContent = initialValue + ' votes';
+
+  option.addEventListener('click', function () {
+      // If user clicks again, decrement the value
+      if (currentValue > initialValue) {
+          currentValue -= 1;
+      } else {
+          currentValue += 1; // Increment the value on click
+      }
+
+      // Ensure we don't exceed 100%
+      const newWidth = Math.min(currentValue, 100);
+
+      // Update progress bar and text
+      progressBar.style.width = newWidth + '%';
+      progressBar.textContent = newWidth + ' votes';
+
+      // Update the data attribute to track the new vote count
+      option.dataset.initial = currentValue;
+
+      // Create the +1 or -1 animation element
+      const animation = document.createElement('div');
+      animation.classList.add('vote-animation');
+      animation.textContent = (currentValue > initialValue) ? '+1' : '-1'; // Add +1 or -1 based on increment or decrement
+      option.appendChild(animation);
+
+      // Remove the animation element after it completes
+      animation.addEventListener('animationend', () => {
+          animation.remove();
+      });
+  });
+});
+
+

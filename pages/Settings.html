@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/index.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background-color: #ff6b08;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .settings-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 30px auto;
+            max-width: 600px;
+        }
+
+        .settings-container h2 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .custom-btn {
+            background-color: #ff8520;
+            border-color: #fd7e14;
+            color: white;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .custom-btn:hover {
+            background-color: #ea8934;
+            border-color: #ea8934;
+        }
+
+        .btn-danger {
+            background-color: #eb5600;
+            border-color: #dc3545;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+            border-color: #c82333;
+        }
+
+        /* Notification and Preloader */
+        .notification {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-in-out, fadeOut 1s ease-in-out 2s;
+            z-index: 1000;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .preloader .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #ff5722;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Preloader -->
+<div id="preloader" class="preloader">
+    <div class="loader"></div>
+</div>
+
+<!-- Notification -->
+<div id="successNotification" class="notification">
+    Logout Successfully
+</div>
+
+<!-- Navbar -->
+<nav class="navbar fixed-bottom navbar-light bg-light">
+    <div class="container-fluid pl-4">
+        <div class="row w-100 text-center">
+            <div class="col-3">
+                <a class="nav-link btn-nav" href="/pages/index.html">
+                    <i class="fas fa-newspaper"></i>
+                    <span>News</span>
+                </a>
+            </div>
+            <div class="col-3">
+                <a class="nav-link btn-nav" href="/pages/Announcement.html">
+                    <i class="fas fa-bullhorn"></i>
+                    <span class="asq">Announcement</span>
+                </a>
+            </div>
+            <div class="col-3">
+                <a class="nav-link btn-nav" href="/pages/Profile.html">
+                    <i class="fas fa-user"></i>
+                    <span clas>Profile</span>
+                </a>
+            </div>
+            <div class="col-3">
+                <a class="nav-link btn-nav" href="/pages/Settings.html">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Header -->
+<div class="header">
+    <h1>Settings</h1>
+</div>
+
+<!-- Settings Form -->
+<div class="settings-container mt-5 pb-5">
+    <form id="settingsForm">
+        <h2>Manage Your Preferences</h2>
+        <div class="form-group">
+            <label for="notification">Notifications</label>
+            <select class="form-control" id="notification">
+                <option>Enabled</option>
+                <option>Disabled</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="theme">Theme</label>
+            <select class="form-control" id="theme">
+                <option>Light</option>
+                <option>Dark</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="privacy">Privacy</label>
+            <select class="form-control" id="privacy">
+                <option>Public</option>
+                <option>Private</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="language">Language</label>
+            <select class="form-control" id="language">
+                <option>English</option>
+                <option>Spanish</option>
+                <option>French</option>
+                <option>German</option>
+            </select>
+        </div>
+        <button type="submit" class="btn custom-btn btn-block mt-4">Save Settings</button>
+        <!-- Logout Button -->
+<button id="logoutButton" type="button" class="btn btn-danger btn-block mt-3">Logout</button>
+
+    </form>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // Preloader functionality when the page loads
+    window.addEventListener('load', function () {
+        document.getElementById('preloader').style.display = 'none';
+    });
+
+    // Display preloader when logout is clicked
+    document.getElementById('logoutButton').addEventListener('click', function () {
+        // Show preloader
+        document.getElementById('preloader').style.display = 'flex';
+
+        // Redirect to the logout page after a short delay (optional for user experience)
+        setTimeout(() => {
+            window.location.href = "signin.html"; // Replace "signin.html" with the correct logout URL
+        }, 1000); // 1-second delay
+    });
+
+    // Settings form submit handling
+    document.getElementById('settingsForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const notification = document.getElementById('successNotification');
+        notification.style.display = 'block';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000);
+    });
+</script>
+
+</body>
+</html>

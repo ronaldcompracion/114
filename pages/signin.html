@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="/assets/css/signin_up.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+ 
+</head>
+  <!-- Preloader -->
+  <div id="preloader" class="preloader" style="display: none;">
+    <div class="loader"></div>
+</div>
+
+<div class="form-container">
+    <h2>Sign In</h2>
+    <form id="signinForm">
+        <div class="form-group">
+            <input type="email" class="form-control" id="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="password" placeholder="Password">
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe">
+            <label class="form-check-label" for="rememberMe">Remember Me</label>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mt-3">Sign In</button>
+        <a href="signup.html" class="sign-up-link text-center pt-2">Don't have an account? Sign up</a>
+    </form>
+    <div id="successNotification" class="notification">
+        Signed In Successfully
+    </div>
+</div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ <script src="/assets/js/signin.js"></script>
+</body>
+</html>

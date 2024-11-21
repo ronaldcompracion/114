@@ -23,13 +23,14 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('contextmenu', function(event) {
     event.preventDefault();
 }, false);
-
+// REACTION
 document.querySelectorAll(".reaction-btn").forEach(function(likeButton) {
     const reactionEmojis = likeButton.closest('.interaction').querySelector(".reaction-emojis");
     const selectedReactionIcon = likeButton.querySelector("i");
 
     let pressTimer;
     let userReaction = ""; // Variable to store the selected reaction
+    let isReactionVisible = false; // Tracks whether the emoji reactions are visible
 
     const emojiToIconClassMap = {
         "👍": "fas fa-thumbs-up",
@@ -37,7 +38,7 @@ document.querySelectorAll(".reaction-btn").forEach(function(likeButton) {
         "😂": "fas fa-laugh",
         "😮": "fas fa-surprise",
         "😢": "fas fa-sad-tear",
-        "👏": "fas fa-hand-peace" // Correct Font Awesome class for clap
+        "👏": "fas fa-hand-peace"
     };
 
     likeButton.addEventListener("mousedown", startPress);
@@ -48,42 +49,45 @@ document.querySelectorAll(".reaction-btn").forEach(function(likeButton) {
     likeButton.addEventListener("touchstart", startPress);
     likeButton.addEventListener("touchend", cancelPress);
 
-    // Event listener to hide reactions if clicking outside
+    // Add event listeners for each emoji to save the reaction
+    likeButton.closest('.interaction').querySelectorAll(".emoji").forEach(emoji => {
+        emoji.addEventListener("click", function() {
+            if (userReaction === emoji.textContent) {
+                userReaction = ""; // Reset the reaction
+            } else {
+                userReaction = emoji.textContent; // Get the emoji text
+            }
+            updateReactionUI();
+            hideReactions();
+        });
+    });
+
+    // If the Like button is clicked, toggle the reaction
+    likeButton.addEventListener("click", function() {
+        if (isReactionVisible) {
+            hideReactions(); // Hide reactions if they are visible
+        } else if (userReaction !== "") {
+            userReaction = ""; // Reset the reaction if it was already selected
+            updateReactionUI(); // Update the UI to show the default "Like" icon
+        } else {
+            userReaction = "👍"; // Default reaction on a single click
+            updateReactionUI();
+        }
+    });
+
+    // Hide reactions if clicking outside
     document.addEventListener("click", function(event) {
         if (!reactionEmojis.contains(event.target) && event.target !== likeButton) {
             hideReactions();
         }
     });
 
-    // Add event listeners for each emoji to save the reaction
-    likeButton.closest('.interaction').querySelectorAll(".emoji").forEach(emoji => {
-        emoji.addEventListener("click", function() {
-            // If the same emoji is clicked again, reset it
-            if (userReaction === emoji.textContent) {
-                userReaction = ""; // Reset the reaction
-                updateReactionUI(); // Update the UI to show default "Like" icon and reset color
-            } else {
-                userReaction = emoji.textContent; // Get the emoji text
-                updateReactionUI(); // Update UI with selected reaction icon
-                hideReactions();
-            }
-        });
-    });
-
-    // If the Like button is clicked, toggle the reaction
-    likeButton.addEventListener("click", function() {
-        if (userReaction !== "") {
-            userReaction = ""; // Reset the reaction if it was already selected
-            updateReactionUI(); // Update the UI to show default "Like" icon and reset color
-        } else {
-            showReactions(); // Show the emoji reactions if no reaction is selected
-            selectedReactionIcon.style.color = "#EA8934"; // Set the color to orange on first click
-        }
-    });
-
     function startPress() {
         // Start the timer for long press (500 ms)
-        pressTimer = setTimeout(showReactions, 500);
+        pressTimer = setTimeout(() => {
+            showReactions();
+            isReactionVisible = true;
+        }, 500);
     }
 
     function cancelPress() {
@@ -92,22 +96,21 @@ document.querySelectorAll(".reaction-btn").forEach(function(likeButton) {
     }
 
     function showReactions() {
-        console.log("Showing reactions"); // Debugging
         reactionEmojis.style.display = "flex";
+        isReactionVisible = true;
     }
 
     function hideReactions() {
-        console.log("Hiding reactions"); // Debugging
         reactionEmojis.style.display = "none";
+        isReactionVisible = false;
     }
 
     function updateReactionUI() {
-        // If a reaction was selected, show the corresponding icon and color it orange
         if (userReaction) {
-            selectedReactionIcon.className = emojiToIconClassMap[userReaction]; // Replace the icon class with the selected emoji icon class
-            selectedReactionIcon.style.color = "#EA8934"; // Change the icon color to #EA8934
+            selectedReactionIcon.className = emojiToIconClassMap[userReaction];
+            selectedReactionIcon.style.color = "#EA8934"; // Orange color for active reaction
         } else {
-            selectedReactionIcon.className = "fas fa-thumbs-up"; // Default icon when no reaction is selected
+            selectedReactionIcon.className = "fas fa-thumbs-up"; // Default like icon
             selectedReactionIcon.style.color = ""; // Reset to default color
         }
     }
@@ -174,9 +177,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     newComment.classList.add("d-flex", "align-items-start", "m-2", "pb-2", "comment");
 
                     newComment.innerHTML = `
-                        <img src="images/Profile/Profile Pic.png" alt="Profile Picture" class="profile-pic" />
+                        <img src="/assets/images/Profile/Profile Pic.png" alt="Profile Picture" class="profile-pic" />
                         <div class="ms-2">
-                            <b>Your Name</b>
+                            <b>John Doe</b>
                             <p class="comment-text">${commentText}</p>
                         </div>
                     `;
@@ -222,7 +225,7 @@ document.getElementById("addCommentBtn").addEventListener("click", function () {
 
         newComment.innerHTML = `
             <img
-                src="images/Profile/Profile Pic.png"
+                src="/assets/images/Profile/Profile Pic.png"
                 alt="Profile Picture"
                 class="profile-pic"
             />

@@ -1,115 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/assets/index.css" />
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-2 col-md-auto text-center logo ps-0 ms-n2">
-              <img
-                src="/assets/images/logo/logo.png"
-                alt="CCIS Logo"
-                class="img-fluid mt-1"
-                style="height: 44px"
-              />
-            </div>
-  
-            <!-- Text Column -->
-            <div class="col-5 col-md text-start ps-0 ms-n2">
-              <h2 class="mb-2 title">CCIS CONNECT</h2>
-              <p class="mb-0 small">
-                College of Computing and Information Sciences
-              </p>
-            </div>
-  
-            <div class="col col-md-auto text-end search">
-              <form class="d-flex position-relative">
-                <input
-                  class="form-control rounded-pill extended-search"
-                  type="search"
-                  aria-label="Search"
-                  style="padding-right: 35px"
-                />
-                <span
-                  class="position-absolute end-0 top-50 translate-middle-y me-3"
-                >
-                  <i class="bi bi-search"></i>
-                  <!-- Bootstrap icon class for a search icon -->
-                </span>
-              </form>
-            </div>
-          </div>
-        </div>
-      </header>
-      <!-- End Header -->
-  
-      <!-- Navbar -->
-  
-      <!-- Navigation Bar -->
-      <nav class="navbar fixed-bottom navbar-light bg-light">
-        <div class="container-fluid pl-4">
-          <div class="row w-100 text-center">
-            <div class="col-3">
-              <a class="nav-link btn-nav" href="/pages/index.html">
-                <i class="fas fa-newspaper"></i>
-                <span>News</span>
-              </a>
-            </div>
-            <div class="col-3">
-              <a class="nav-link btn-nav" href="/pages/Announcement.html">
-                <i class="fas fa-bullhorn"></i>
-                <span class="asq">Announcement</span>
-              </a>
-            </div>
-            <div class="col-3">
-              <a class="nav-link btn-nav" href="#">
-                <i class="fas fa-user"></i>
-                <span clas>Profile</span>
-              </a>
-            </div>
-            <div class="col-3">
-              <a class="nav-link btn-nav" href="#">
-                <i class="fas fa-cog"></i>
-                <span>Settings</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </nav>
-  
-       <!-- </div> -->
-    <link
+  </head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
   />
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/index.css" />
+  <link rel="stylesheet" href="/assets/css/announcement.css" />
+  <link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+  />
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+      <div class="container-fluid pl-4">
+        <div class="row w-100 text-center">
+          <div class="col-3">
+            <a class="nav-link btn-nav" href="/pages/index.html">
+              <i class="fas fa-newspaper"></i>
+              <span>News</span>
+            </a>
+          </div>
+          <div class="col-3">
+            <a class="nav-link btn-nav" href="/pages/Announcement.html">
+              <i class="fas fa-bullhorn"></i>
+              <span class="asq">Announcement</span>
+            </a>
+          </div>
+          <div class="col-3">
+            <a class="nav-link btn-nav" href="/pages/Profile.html">
+              <i class="fas fa-user"></i>
+              <span clas>Profile</span>
+            </a>
+          </div>
+          <div class="col-3">
+            <a class="nav-link btn-nav" href="/pages/Settings.html">
+              <i class="fas fa-cog"></i>
+              <span>Settings</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!--End  Navbar -->
+    <!-- Announcement Banner -->
+    <div class="container">
+      <div class="row align-items-center" id="anbg" style="padding: 4px">
+        <div class="col-6">
+          <h3 class="text-white">Announcement</h3>
+        </div>
+        <div class="col-6 d-flex justify-content-end position-relative">
+          <i class="fas fa-light fa-clipboard-list icon" id="surveyIcon"></i>
+          <span class="badge">5</span>
+      </div>
+      </div>
+    </div>
 
-  <!-- JS -->
-  <script src="/assets/js/newsfeed.js"></script>
+    <!-- End Announcement Banner-->
+     <!-- Survey -->
 
-  <!-- JS NAVBAR -->
-  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+     <!-- Survey Modal -->
+     <div class="custom-modal" id="surveyModal">
+      <div class="custom-modal-content">
+          <h4>Survey Poll</h4>
+          <p>Share your feedback by voting below:</p>
+          <div class="poll-container">
+              <!-- Question 1 -->
+              <div class="poll">
+                  <label>1. How satisfied are you with the program?</label>
+                  <div class="poll-option" data-initial="75">
+                    <span>Very Satisfied</span>
+                    <div class="progress-bar-container">
+                        <div class="custom-progress-bar" style="width: 50%;">5 votes</div>
+                    </div>
+                </div>
+                
+                <div class="poll-option" data-initial="25">
+                  <span>Satisfied</span>
+                  <div class="progress-bar-container">
+                      <div class="custom-progress-bar" style="width: 50%;">5 votes</div>
+                  </div>
+              </div>
+              
+              <div class="poll-option" data-initial="15">
+                <span>Neutral</span>
+                <div class="progress-bar-container">
+                    <div class="custom-progress-bar" style="width: 50%;">5 votes</div>
+                </div>
+            </div>
+            
+              </div>
+  
+              <!-- Question 2... -->
+              <hr>
+               <div class="poll">
+                <label>2. How confident are you in your JavaScript skills?</label>
+                <div class="poll-option" data-initial="60">
+                  <span>Very Confident</span>
+                  <div class="progress-bar-container">
+                    <div class="custom-progress-bar" style="width: 60%;">6 votes</div>
+                  </div>
+                </div>
+              
+                <div class="poll-option" data-initial="20">
+                  <span>Somewhat Confident</span>
+                  <div class="progress-bar-container">
+                    <div class="custom-progress-bar" style="width: 20%;">2 votes</div>
+                  </div>
+                </div>
+              
+                <div class="poll-option" data-initial="10">
+                  <span>Not Confident</span>
+                  <div class="progress-bar-container">
+                    <div class="custom-progress-bar" style="width: 10%;">1 vote</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 3 -->
+              <hr>
+              
+              <div class="poll">
+                <label>3. How do you feel about using Python for data analysis?</label>
+                <div class="poll-option" data-initial="40">
+                  <span>Very Positive</span>
+                  <div class="progress-bar-container">
+                    <div class="custom-progress-bar" style="width: 80%;">8 votes</div>
+                  </div>
+                </div>
+              
+                <div class="poll-option" data-initial="15">
+                  <span>Neutral</span>
+                  <div class="progress-bar-container">
+                    <div class="custom-progress-bar" style="width: 15%;">1 vote</div>
+                  </div>
+                </div>
+              
+                <div class="poll-option" data-initial="5">
+                  <span>Negative</span>
+                  <div class="progress-bar-container">
+                    <div class="custom-progress-bar" style="width: 5%;">0 votes</div>
+                  </div>
+                </div>
+              </div>
+               <!-- Question 4 -->
+              
+               <hr>
+              
+              
+              <div class="poll">
+                <label>4. How often do you use version control systems like Git in your projects?</label>
+                <div class="poll-option" data-initial="30">
+                  <span>Frequently</span>
+                  <div class="progress-bar-container">
+                    <div class="custom-progress-bar" style="width: 70%;">7 votes</div>
+                  </div>
+                </div>
+              
+                <div class="poll-option" data-initial="25">
+                  <span>Occasionally</span>
+                  <div class="progress-bar-container">
+                    <div class="custom-progress-bar" style="width: 25%;">2 votes</div>
+                  </div>
+                </div>
+              
+                <div class="poll-option" data-initial="5">
+                  <span>Never</span>
+                  <div class="progress-bar-container">
+                    <div class="custom-progress-bar" style="width: 5%;">0 votes</div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Add 4 more questions following the same structure as above -->
+          </div>
+          <button id="closeModal">Close</button>
+          <br>
+      </div>
+  </div>
+
+  
+    <!-- Pinned Announcements Section -->
+
+    <div class="announcement-header pt-3 tit1" id="pinned-title">
+      <b>Pinned</b>
+    </div>
+    <div class="announcement-item">
+      <div class="container mt-3">
+        <div class="announcement" id="pinned-container">
+          <!-- Pinned announcements will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- What's New Section -->
+    <div class="announcement-header pt-3 tit1" id="new-title">
+      <b>What's New</b>
+    </div>
+    <div class="announcement-item">
+      <div class="container mt-3">
+        <div class="announcement" id="new-container">
+          <!-- New announcements will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Old Announcements Section -->
+    <div class="announcement-header pt-3 tit1" id="old-title">
+      <b>Old Announcements</b>
+    </div>
+    <div class="announcement-item">
+      <div class="container mt-3">
+        <div class="announcement" id="old-container">
+          <!-- Old announcements will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Card -->
+    <div class="modal-overlay hidden">
+      <div class="modal-card">
+        <h3 id="modal-title"></h3>
+        <p id="modal-description"></p>
+        <p id="modal-date"></p>
+        <button class="close-btn pt-2">Close</button>
+      </div>
+    </div>
+
+    <!-- Redesigned Modal -->
+    <div
+      class="modal fade custom-modal"
+      id="addToCalendarModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addToCalendarModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="addToCalendarModalLabel">
+              Add to Calendar
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!-- Modal Body -->
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="modal-date-input" />
+              </div>
+              <div class="form-group">
+                <label for="time">Time:</label>
+                <input type="time" class="form-control" id="time" />
+              </div>
+              <div class="form-group form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input custom-checkbox"
+                  id="pushNotification"
+                />
+                <label class="form-check-label" for="pushNotification"
+                  >Enable Push Notification</label
+                >
+              </div>
+            </form>
+          </div>
+          <!-- Modal Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn custom-save-btn" id="saveButton">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <!-- JS -->
+    <script src="/assets/js/newsfeed.js"></script>
+    <script type="module" src="/assets/js/Announcement.js"></script>
+
+    <!-- JS NAVBAR -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>

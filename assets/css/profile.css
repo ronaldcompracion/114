@@ -1,0 +1,132 @@
+
+        body {
+            background-color: #f8f9fa;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            
+        }
+        .profile-header {
+            background-color: #ed5500;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .profile-header img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .profile-header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .profile-header p {
+            font-size: 14px;
+            margin: 5px 0 0;
+        }
+        .profile-header .fa-user-circle {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .dashboard {
+            padding: 20px;
+        }
+        .saved-announcements {
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        .saved-announcements .count {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ed5500;
+        }
+        .saved-announcements span {
+            font-size: 18px;
+            color: #6c757d;
+        }
+        .announcement-card {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .announcement-title {
+            font-weight: bold;
+            color: #343a40;
+        }
+        .announcement-date,
+        .announcement-time {
+            color: #6c757d;
+            font-size: 12px;
+        }
+        .announcement-time {
+            font-style: italic;
+        }
+        .delete-button {
+            color: #e45300;
+            font-size: 1rem;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .delete-button:hover {
+            color: #d85a00;
+        }
+        /* Modal Centering */
+        .modal-dialog {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .modal-content {
+            text-align: center;
+            padding: 20px;
+        }
+        .modal-footer button {
+            width: 150px;
+        }
+
+        .btn-danger {
+    color: #fff;
+    background-color: #ed5500; /* Updated to the orange color */
+    border-color: #ed5500; /* Updated to the orange color */
+}
+
+.btn-danger:hover {
+    background-color: #d85a00; /* Slightly darker orange on hover */
+    border-color: #d85a00; /* Slightly darker orange on hover */
+}
+
+    
+.notification {
+    background-color: green;  /* Green background */
+    color: white;             /* White text */
+    padding: 10px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: none;  /* Initially hidden */
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.notification.show {
+    display: block;  /* Make it visible */
+    opacity: 1;      /* Fade in */
+}

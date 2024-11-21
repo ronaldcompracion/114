@@ -1,0 +1,421 @@
+/* Announcement */
+#anbg {
+    background-color: #ed5500; /* Orange color */
+    align-items: center;
+  }
+  
+  .row .icon {
+    background-color: #ff0000 !important;
+    color: #ffffff !important;
+    border-radius: 50%;
+    margin-left: 15px; /* Adjust spacing */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px; /* Adjust icon size */
+}
+
+  
+  h3 {
+    margin: 0;
+  }
+  .badge {
+    position: absolute;
+    top: -5px; /* Adjust position */
+    right: -5px; /* Adjust position */
+    background-color: #ff3300; /* Red badge color */
+    color: #ffffff; /* White text */
+    font-size: 10px; /* Smaller font size */
+    width: 18px; /* Circular badge size */
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold; /* Make number bold */
+}
+  
+  /* Title for Announcement */
+ .tit1{
+    color: #ea8934; /* White text color */
+    margin-left: 15px;
+    font-size: 12px;
+    
+   
+ }
+
+ /* Default icon color */
+/* Default icon color */
+/* Default icon color */
+.pinned-icon, .check-icon {
+    color: #ea8934;  /* Default orange color for icons */
+  }
+  
+  /* Check icon button with white background */
+  .check-btn {
+    background-color: white;  /* White background for the button */
+    border: 2px solid #ea8934;  /* Border color to match the icon color */
+    border-radius: 5px;  /* Optional: round the corners */
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;  /* Smooth transition effect */
+  }
+  
+  /* Hover effect */
+  .check-btn:hover {
+    background-color: #ea8934;  /* Change background to the icon color */
+    border-color: #ea8934;  /* Optional: change border color on hover */
+  }
+  
+  /* When the button is active */
+  .check-btn.active {
+    background-color: #ea8934;  /* Background turns to orange when active */
+    border-color: #ea8934;  /* Border also turns orange when active */
+  }
+  
+  /* Change color on check icon click when active */
+  .check-btn.active .check-icon {
+    color: white;  /* White icon when active */
+  }
+  
+  /* Change icon color back to orange when inactive */
+  .check-btn .check-icon {
+    color: #ea8934;  /* Orange icon when inactive */
+  }
+  
+  /* Style for the small text (add id) */
+  .add-id {
+    font-size: 0.8rem;
+    color: gray;
+  }
+  
+  /* Style for the small text (add id) */
+  #date {
+    font-size: 8px;
+    color: gray;
+  }
+  
+  /* Title */
+  #tit2{
+    font-size: medium;
+    color: rgb(0, 0, 0);
+    opacity: 70%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  /* Announcement item background color */
+  .announcement-item {
+    background-color: #fff5eb;
+  }
+  
+
+/* MODAL FOR ANNOUNCEMENT*/
+/* Overlay background */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker transparent background */
+    display: flex;
+    justify-content: center; /* Center modal horizontally */
+    align-items: center; /* Center modal vertically */
+    padding: 20px;
+    z-index: 1000; /* Ensure modal appears above other content */
+  }
+  
+  /* Modal card */
+  .modal-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 100%;
+    height: 750px; /* Fixed height for modal */
+    overflow-y: auto; /* Allows scrolling if content is too long */
+  }
+  
+  /* Hide modal by default */
+  .hidden {
+    display: none;
+  }
+  
+  /* Close button */
+  .close-btn {
+    background-color: #ea8934;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 120px;
+  }
+  
+  .close-btn:hover {
+    background-color: #d9772c;
+  }
+  
+  /* Modal title */
+  .modal-card h3 {
+    font-size:24px;
+    margin-bottom: 15px;
+    color:#ea8934 ;
+    font-weight: bold;
+
+  }
+  
+  /* Modal description */
+  .modal-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #555;
+  }
+  
+  .modal-card p b {
+    font-weight: bold;
+  }
+  
+  /* Modal Date */
+  #modal-date {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 10px;
+  }
+  
+
+  /* MODAL FOR DATE */
+
+  /* Center the modal vertically and horizontally */
+.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Custom modal header style */
+  .modal-header {
+    background-color: #ea8934;
+    color: white;
+    border-bottom: none;
+  }
+  
+  /* Custom save button style */
+.custom-save-btn {
+    background-color: #ea8934;
+    border-color: #ea8934;
+    color: white;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .custom-save-btn:hover {
+    background-color: #d0762d;
+    border-color: #d0762d;
+  }
+  
+  /* Active state when the checkbox is checked */
+  .custom-save-btn.active {
+    background-color: #b85c1f;
+    border-color: #b85c1f;
+  }
+  
+  /* Custom checkbox styles */
+  .custom-checkbox:checked {
+    background-color: #ea8934;
+    border-color: #ea8934;
+  }
+  
+  .custom-checkbox {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+
+  /* Modals for Survey */
+  /* Modal styling */
+/* General Styling for Poll Options */
+.poll-option {
+  margin: 10px 0;
+  cursor: pointer;
+  position: relative;
+  padding: 8px 12px; /* Increased padding for better touch targets */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+  background-color: #f9f9f9; /* Default background */
+}
+
+/* Hover effect for poll options */
+.poll-option:hover {
+  background-color: #f1f1f1; /* Highlight on hover */
+}
+
+/* Progress Bar Container Styling */
+.progress-bar-container {
+  background-color: #e9ecef; /* Light grey background */
+  border-radius: 10px;
+  overflow: hidden;
+  height: 24px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+/* Custom Progress Bar Styling */
+.custom-progress-bar { 
+  background-color: #ed5500 !important; /* Orange color */
+  height: 100%; /* Ensure it fills the progress-bar container */
+  color: #fff; /* White text for better contrast */
+  font-size: 12px; /* Adjust font size */
+  display: flex; /* Use flex for centering */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  transition: width 0.4s ease-in-out; /* Smooth animation */
+  border-radius: 10px 0 0 10px; /* Rounded corners */
+}
+
+/* Fix for unwanted color change on click */
+.custom-progress-bar:active,
+.custom-progress-bar:focus {
+    background-color: #ed5500 !important; /* Retain the original orange color */
+    outline: none; /* Remove focus outline */
+}
+
+/* +1 or -1 Animation Styling */
+.vote-animation {
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ed5500; /* Match the theme */
+    animation: fadeOutUp 0.8s forwards; /* Animation properties */
+    right: 10px; /* Position on the right of the clicked bar */
+    top: -15px; /* Slightly above the clicked area */
+    pointer-events: none; /* Prevent interfering with clicks */
+}
+
+@keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+}
+
+/* Modal Styling */
+.custom-modal {
+  display: none; /* Initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+  z-index: 1050; /* Ensure it appears above Bootstrap elements */
+  overflow-y: auto; /* Scrollable for overflow content */
+}
+
+/* Modal Content Styling */
+.custom-modal-content {
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px; /* Constrain modal size on larger screens */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  position: relative;
+  max-height: 95%; /* Limit height for mobile */
+  overflow-y: auto; /* Enable scrolling for tall content */
+}
+
+/* Modal Heading */
+.custom-modal-content h4 {
+  font-size: 20px;
+  color: #ed5500;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Close Button Styling */
+#closeModal {
+  display: block;
+  margin: 20px auto 0; /* Center the button */
+  padding: 10px 20px;
+  background-color: #ed5500; /* Match theme */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+}
+
+#closeModal:hover {
+  background-color: #c94700; /* Slightly darker shade on hover */
+}
+
+#closeModal:active {
+  background-color: #a53b00; /* Even darker shade on click */
+}
+
+/* Poll Label Styling */
+.poll label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  display: block;
+}
+
+/* Scrollbar Customization for Modal */
+.custom-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-modal-content::-webkit-scrollbar-thumb {
+  background: #ed5500;
+  border-radius: 8px;
+}
+
+.custom-modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .custom-modal-content {
+      margin: 10px auto;
+      padding: 10px;
+      max-width: 100%; /* Full width on small devices */
+      border-radius: 8px;
+  }
+
+  .poll label {
+      font-size: 14px;
+  }
+
+  .poll-option {
+      padding: 6px 8px;
+  }
+
+  .progress-bar-container {
+      height: 20px;
+  }
+
+  .custom-progress-bar {
+      font-size: 10px;
+      line-height: 20px;
+  }
+
+  #closeModal {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
