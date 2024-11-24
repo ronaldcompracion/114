@@ -278,19 +278,77 @@
 
 
 /* SEARCH */
-/* Suggestions Container */
-.suggestions {
-  display: block !important; /* Force display */
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px; /* Optional: rounded corners */
-  max-height: 300px; /* Limit height to avoid overflow */
-  overflow-y: auto; /* Add scroll for overflow */
-  z-index: 1000;
-font-size: 12px;
+/* Ensure the header doesn't overlap on small screens */
+#main-header {
+  width: 100%; /* Ensure it spans full width */
+  padding: 0 15px; /* Padding for better spacing on small screens */
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
-/* Individual Suggestion Item */
+#header-row {
+  display: flex; /* Use flexbox to align items in a row */
+  justify-content: space-between; /* Space between the title and search bar */
+  align-items: center; /* Vertically align both items in the center */
+  width: 100%;
+}
+
+/* Title Container */
+#nav-title-container {
+  padding-right: 15px;
+  flex: 1 1 30%; /* Ensure it takes up 30% of space on larger screens */
+  margin-left: 35px;
+}
+
+#navtitle {
+  font-size: 24px;
+}
+
+/* Search Container */
+#search-container {
+  position: relative;
+  flex: 1 1 65%; /* Ensure search bar takes up more space */
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Ensure the search input takes full width on small screens */
+#search-input {
+  width: 100%;
+}
+
+/* Search Suggestions Styling */
+#search-suggestions {
+  position: absolute;
+  top: 100%; /* Position it below the search input */
+  left: 0;
+  right: 0;
+  z-index: 1050; /* Ensure it stays on top */
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Responsiveness for Mobile */
+@media (max-width: 767px) {
+  #header-row {
+    flex-direction: row; /* Ensure they remain in a row */
+    align-items: center;
+  }
+
+  #nav-title-container {
+    text-align: left;
+    padding: 10px 0;
+  }
+
+  #search-container {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+/* Styling for Search Suggestions */
 .suggestion-item {
   padding: 10px;
   cursor: pointer;
@@ -307,14 +365,12 @@ font-size: 12px;
   border-bottom: none;
 }
 
-/* Title Styling in Suggestion */
 .suggestion-item strong {
   display: block;
   font-weight: bold;
-  color: #333; /* Optional: Customize title color */
+  color: #333;
 }
 
-/* Description Styling in Suggestion */
 .suggestion-item .description {
   color: #666;
   font-size: 13px;
