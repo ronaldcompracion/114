@@ -380,7 +380,7 @@ i,
 
 .comment-text {
   margin-bottom: 0;
-  font-size: 0.85rem; /* Consistent font size for comments */
+  font-size: 12px ;/* Consistent font size for comments */
   color: #555; /* Subtle text color */
 }
 

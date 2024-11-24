@@ -17,7 +17,7 @@
     <h2>Sign In</h2>
     <form id="signinForm">
         <div class="form-group">
-            <input type="email" class="form-control" id="email" placeholder="Email">
+            <input type="text" class="form-control" id="id-number" placeholder="ID-Number">
         </div>
         <div class="form-group">
             <input type="password" class="form-control" id="password" placeholder="Password">
@@ -32,12 +32,15 @@
     <div id="successNotification" class="notification">
         Signed In Successfully
     </div>
+    <div id="errorNotification" class="notification">
+        Invalid Credentials
+    </div>
 </div>
 
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
- <script src="/assets/js/signin.js"></script>
+ <script type="module" src="/assets/js/signin.js"></script>
 </body>
 </html>
