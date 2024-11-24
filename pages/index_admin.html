@@ -23,10 +23,38 @@
   </head>
   <body>
     <!-- Header -->
-    <header class="header" id="header">
-      <div class="container">
-       <marquee behavior="" direction=""><h4 class="text-white">Welcome Admin! Manage your posts including banners and news.</h4></marquee>
-      </div>
+    <header class="header">
+      <div class="row">
+
+          <!-- Text Column -->
+           <div class="col-1"></div>
+          <div class="col-3 col-md text-start ps-0 ms-n2">
+            <h3 class="mb-2 title" id="navtitle">NEWS</h3>
+          </div>
+
+          <div class="col-8 col-md-auto text-end search pt-1">
+            <form class="d-flex position-relative">
+              <input
+                class="form-control rounded-pill extended-search"
+                type="search"
+                aria-label="Search"
+                style="padding-right: 35px"
+                id="search-input" 
+              />
+              <span
+                class="position-absolute end-0 top-50 translate-middle-y me-3"
+              >
+                <i class="bi bi-search"></i>
+              </span>
+          </form>
+          <!-- Dropdown for suggestions -->
+          <ul id="search-suggestions" class="list-group position-absolute w-100" style="display: none;"></ul>
+          
+            
+            
+          </div>
+       </div> 
+      
     </header>
     <!-- End Header -->
 
@@ -126,9 +154,10 @@
         </button>
       </div>
     </div>
+    <hr>
     <!-- End Carousel -->
     <!-- Create Post Button -->
-    <div class="container pt-4 text-center">
+    <div class="container pt-5 pb-4 text-center">
       <button
         type="button"
         class="btn btn-custom mb-3 text-center"
@@ -136,9 +165,11 @@
         data-bs-toggle="modal"
         data-bs-target="#CreateModal"
       >
-        Create News
+        Create News 
       </button>
     </div>
+
+    <hr>
 
     <!-- Content Cards -->
     <div class="container">

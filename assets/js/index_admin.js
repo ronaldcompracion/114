@@ -57,6 +57,8 @@ async function deleteNews(newsId) {
 // Function to fetch and display news data
 // Function to fetch and display news data
 // Function to fetch and display news data
+let newsData = []; // Global variable to store fetched news data
+
 async function fetchNews() {
   try {
     const { data, error } = await supabase.from("News").select("*");
@@ -72,8 +74,8 @@ async function fetchNews() {
       return;
     }
 
-    // Sort the data by id in descending order
-    data.sort((a, b) => b.id - a.id);
+    // Save fetched data in a global variable and sort by id in descending order
+    newsData = data.sort((a, b) => b.id - a.id);
 
     const newsContainer = document.getElementById("news-container");
 
@@ -85,7 +87,8 @@ async function fetchNews() {
     // Clear the container before appending new cards
     newsContainer.innerHTML = "";
 
-    for (const newsItem of data) {
+    // Loop through the sorted data to create and append cards
+    for (const newsItem of newsData) {  // Use newsData here instead of 'data'
       console.log("Processing news item:", newsItem);
 
       // Fetch reactions, comments, and favorites counts
@@ -378,3 +381,62 @@ document
 // 
 // 
 // 
+// SEARCH FUNCTION
+
+// Search function to filter news items
+function searchNews(query) {
+  // Remove empty spaces and make it lowercase for case-insensitive search
+  const searchQuery = query.toLowerCase().trim();
+
+  // Filter newsData based on the search query (searching in title and description)
+  const results = newsData.filter((newsItem) =>
+    newsItem.title.toLowerCase().includes(searchQuery) ||
+    newsItem.description.toLowerCase().includes(searchQuery)
+  );
+
+  // Show matching results in dropdown
+  displaySearchSuggestions(results);
+}
+
+// Function to display search suggestions in the dropdown
+function displaySearchSuggestions(results) {
+  const suggestionsContainer = document.getElementById("search-suggestions");
+  suggestionsContainer.innerHTML = "";  // Clear previous suggestions
+
+  if (results.length === 0) {
+    suggestionsContainer.style.display = "none";  // Hide dropdown if no results
+    return;
+  }
+
+  // Display each result in the dropdown
+  results.forEach((newsItem) => {
+    const suggestionItem = document.createElement("li");
+    suggestionItem.classList.add("list-group-item");
+    suggestionItem.textContent = newsItem.title;
+
+    // When a suggestion is clicked, display the full news card
+    suggestionItem.addEventListener("click", () => {
+      // Handle selection logic, e.g., load the full news card or highlight
+      alert(`You selected: ${newsItem.title}`);
+      suggestionsContainer.style.display = "none";  // Hide dropdown after selection
+    });
+
+    suggestionsContainer.appendChild(suggestionItem);
+  });
+
+  // Show the suggestions dropdown
+  suggestionsContainer.style.display = "block";
+}
+
+// Add event listener for search input
+document.getElementById("search-input").addEventListener("input", function() {
+  const query = this.value;
+  searchNews(query);  // Call the search function each time the user types
+});
+
+// Optionally, clear the suggestions when the input is focused out
+document.getElementById("search-input").addEventListener("blur", () => {
+  setTimeout(() => {  // Timeout ensures the suggestion can be clicked
+    document.getElementById("search-suggestions").style.display = "none";
+  }, 200);
+});

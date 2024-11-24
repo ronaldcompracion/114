@@ -259,8 +259,63 @@
   background-color: #fd7e14;
   border-color: #fd7e14;
   color: #fff;
+  padding: 5px;
 }
 #btn-custom-post:hover {
   background-color: #ea8934;
   border-color: #ea8934;
+}
+
+#navtitle
+{
+  padding-top: 4px;
+  color: white;
+  font-size: 27px;
+  margin-left: -15px;
+
+}
+
+
+
+/* SEARCH */
+/* Suggestions Container */
+.suggestions {
+  display: block !important; /* Force display */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px; /* Optional: rounded corners */
+  max-height: 300px; /* Limit height to avoid overflow */
+  overflow-y: auto; /* Add scroll for overflow */
+  z-index: 1000;
+font-size: 12px;
+}
+
+/* Individual Suggestion Item */
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff; /* Ensure white background */
+}
+
+.suggestion-item:hover {
+  background-color: #f4f4f4;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+/* Title Styling in Suggestion */
+.suggestion-item strong {
+  display: block;
+  font-weight: bold;
+  color: #333; /* Optional: Customize title color */
+}
+
+/* Description Styling in Suggestion */
+.suggestion-item .description {
+  color: #666;
+  font-size: 13px;
 }
