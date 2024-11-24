@@ -55,147 +55,185 @@
     <!--End  Navbar -->
     <!-- Announcement Banner -->
     <div class="container">
-      <div class="row align-items-center" id="anbg" style="padding: 4px">
-        <div class="col-6">
-          <h3 class="text-white">Announcement</h3>
+      <div class="row align-items-center" id="anbg" >
+        <div class="col-6 text-white" style="font-weight: bold; font-size: 20px;">Announcement</div>
+        <div class="col-6 text-end search pb-1 pt-1" id="search-container">
+          <form class="d-flex position-relative">
+            <input
+              class="form-control rounded-pill extended-search"
+              type="search"
+              aria-label="Search"
+              style="padding-right: 35px"
+              id="search-input"
+              placeholder="Search announcements..."
+            />
+            <span class="position-absolute end-0 top-50 translate-middle-y me-3">
+              <i class="bi bi-search"></i>
+            </span>
+          </form>
+        
+          <ul
+            id="search-suggestions"
+            class="list-group position-absolute w-100"
+            style="display: none"
+          ></ul>
         </div>
-        <div class="col-6 d-flex justify-content-end position-relative">
-          <i class="fas fa-light fa-clipboard-list icon" id="surveyIcon"></i>
-          <span class="badge">5</span>
       </div>
-      </div>
+    </div>
+
+    <div class="col-11 d-flex justify-content-end position-relative mt-2">
+      <i id="surveyIcon">Take Survey Poll</i>
+      <span class="badge">5</span>
     </div>
 
     <!-- End Announcement Banner-->
-     <!-- Survey -->
+    <!-- Survey -->
 
-     <!-- Survey Modal -->
-     <div class="custom-modal" id="surveyModal">
+    <!-- Survey Modal -->
+    <div class="custom-modal" id="surveyModal">
       <div class="custom-modal-content">
-          <h4>Survey Poll</h4>
-          <p>Share your feedback by voting below:</p>
-          <div class="poll-container">
-              <!-- Question 1 -->
-              <div class="poll">
-                  <label>1. How satisfied are you with the program?</label>
-                  <div class="poll-option" data-initial="75">
-                    <span>Very Satisfied</span>
-                    <div class="progress-bar-container">
-                        <div class="custom-progress-bar" style="width: 50%;">5 votes</div>
-                    </div>
+        <h4>Survey Poll</h4>
+        <p>Share your feedback by voting below:</p>
+        <div class="poll-container">
+          <!-- Question 1 -->
+          <div class="poll">
+            <label>1. How satisfied are you with the program?</label>
+            <div class="poll-option" data-initial="75">
+              <span>Very Satisfied</span>
+              <div class="progress-bar-container">
+                <div class="custom-progress-bar" style="width: 50%">
+                  5 votes
                 </div>
-                
-                <div class="poll-option" data-initial="25">
-                  <span>Satisfied</span>
-                  <div class="progress-bar-container">
-                      <div class="custom-progress-bar" style="width: 50%;">5 votes</div>
-                  </div>
               </div>
-              
-              <div class="poll-option" data-initial="15">
-                <span>Neutral</span>
-                <div class="progress-bar-container">
-                    <div class="custom-progress-bar" style="width: 50%;">5 votes</div>
-                </div>
             </div>
-            
-              </div>
-  
-              <!-- Question 2... -->
-              <hr>
-               <div class="poll">
-                <label>2. How confident are you in your JavaScript skills?</label>
-                <div class="poll-option" data-initial="60">
-                  <span>Very Confident</span>
-                  <div class="progress-bar-container">
-                    <div class="custom-progress-bar" style="width: 60%;">6 votes</div>
-                  </div>
-                </div>
-              
-                <div class="poll-option" data-initial="20">
-                  <span>Somewhat Confident</span>
-                  <div class="progress-bar-container">
-                    <div class="custom-progress-bar" style="width: 20%;">2 votes</div>
-                  </div>
-                </div>
-              
-                <div class="poll-option" data-initial="10">
-                  <span>Not Confident</span>
-                  <div class="progress-bar-container">
-                    <div class="custom-progress-bar" style="width: 10%;">1 vote</div>
-                  </div>
-                </div>
-              </div>
 
-              <!-- Question 3 -->
-              <hr>
-              
-              <div class="poll">
-                <label>3. How do you feel about using Python for data analysis?</label>
-                <div class="poll-option" data-initial="40">
-                  <span>Very Positive</span>
-                  <div class="progress-bar-container">
-                    <div class="custom-progress-bar" style="width: 80%;">8 votes</div>
-                  </div>
-                </div>
-              
-                <div class="poll-option" data-initial="15">
-                  <span>Neutral</span>
-                  <div class="progress-bar-container">
-                    <div class="custom-progress-bar" style="width: 15%;">1 vote</div>
-                  </div>
-                </div>
-              
-                <div class="poll-option" data-initial="5">
-                  <span>Negative</span>
-                  <div class="progress-bar-container">
-                    <div class="custom-progress-bar" style="width: 5%;">0 votes</div>
-                  </div>
+            <div class="poll-option" data-initial="25">
+              <span>Satisfied</span>
+              <div class="progress-bar-container">
+                <div class="custom-progress-bar" style="width: 50%">
+                  5 votes
                 </div>
               </div>
-               <!-- Question 4 -->
-              
-               <hr>
-              
-              
-              <div class="poll">
-                <label>4. How often do you use version control systems like Git in your projects?</label>
-                <div class="poll-option" data-initial="30">
-                  <span>Frequently</span>
-                  <div class="progress-bar-container">
-                    <div class="custom-progress-bar" style="width: 70%;">7 votes</div>
-                  </div>
-                </div>
-              
-                <div class="poll-option" data-initial="25">
-                  <span>Occasionally</span>
-                  <div class="progress-bar-container">
-                    <div class="custom-progress-bar" style="width: 25%;">2 votes</div>
-                  </div>
-                </div>
-              
-                <div class="poll-option" data-initial="5">
-                  <span>Never</span>
-                  <div class="progress-bar-container">
-                    <div class="custom-progress-bar" style="width: 5%;">0 votes</div>
-                  </div>
+            </div>
+
+            <div class="poll-option" data-initial="15">
+              <span>Neutral</span>
+              <div class="progress-bar-container">
+                <div class="custom-progress-bar" style="width: 50%">
+                  5 votes
                 </div>
               </div>
-              
-              <!-- Add 4 more questions following the same structure as above -->
+            </div>
           </div>
-          <button id="closeModal">Close</button>
-          <br>
-      </div>
-  </div>
 
-  
+          <!-- Question 2... -->
+          <hr />
+          <div class="poll">
+            <label>2. How confident are you in your JavaScript skills?</label>
+            <div class="poll-option" data-initial="60">
+              <span>Very Confident</span>
+              <div class="progress-bar-container">
+                <div class="custom-progress-bar" style="width: 60%">
+                  6 votes
+                </div>
+              </div>
+            </div>
+
+            <div class="poll-option" data-initial="20">
+              <span>Somewhat Confident</span>
+              <div class="progress-bar-container">
+                <div class="custom-progress-bar" style="width: 20%">
+                  2 votes
+                </div>
+              </div>
+            </div>
+
+            <div class="poll-option" data-initial="10">
+              <span>Not Confident</span>
+              <div class="progress-bar-container">
+                <div class="custom-progress-bar" style="width: 10%">1 vote</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <hr />
+
+          <div class="poll">
+            <label
+              >3. How do you feel about using Python for data analysis?</label
+            >
+            <div class="poll-option" data-initial="40">
+              <span>Very Positive</span>
+              <div class="progress-bar-container">
+                <div class="custom-progress-bar" style="width: 80%">
+                  8 votes
+                </div>
+              </div>
+            </div>
+
+            <div class="poll-option" data-initial="15">
+              <span>Neutral</span>
+              <div class="progress-bar-container">
+                <div class="custom-progress-bar" style="width: 15%">1 vote</div>
+              </div>
+            </div>
+
+            <div class="poll-option" data-initial="5">
+              <span>Negative</span>
+              <div class="progress-bar-container">
+                <div class="custom-progress-bar" style="width: 5%">0 votes</div>
+              </div>
+            </div>
+          </div>
+          <!-- Question 4 -->
+
+          <hr />
+
+          <div class="poll">
+            <label
+              >4. How often do you use version control systems like Git in your
+              projects?</label
+            >
+            <div class="poll-option" data-initial="30">
+              <span>Frequently</span>
+              <div class="progress-bar-container">
+                <div class="custom-progress-bar" style="width: 70%">
+                  7 votes
+                </div>
+              </div>
+            </div>
+
+            <div class="poll-option" data-initial="25">
+              <span>Occasionally</span>
+              <div class="progress-bar-container">
+                <div class="custom-progress-bar" style="width: 25%">
+                  2 votes
+                </div>
+              </div>
+            </div>
+
+            <div class="poll-option" data-initial="5">
+              <span>Never</span>
+              <div class="progress-bar-container">
+                <div class="custom-progress-bar" style="width: 5%">0 votes</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add 4 more questions following the same structure as above -->
+        </div>
+        <button id="closeModal">Close</button>
+        <br />
+      </div>
+    </div>
+
     <!-- Pinned Announcements Section -->
 
-    <div class="announcement-header pt-3 tit1" id="pinned-title">
-      <b>Pinned</b>
+    <div class="announcement-header tit1" id="pinned-title">
+      <b>Pinned by Admin</b>
     </div>
-    <div class="announcement-item">
+    <div class="announcement-item" style="background-color: rgb(255, 247, 246)">
       <div class="container mt-3">
         <div class="announcement" id="pinned-container">
           <!-- Pinned announcements will be dynamically inserted here -->
@@ -207,7 +245,10 @@
     <div class="announcement-header pt-3 tit1" id="new-title">
       <b>What's New</b>
     </div>
-    <div class="announcement-item">
+    <div
+      class="announcement-item"
+      style="background-color: rgba(255, 242, 230, 0.603)"
+    >
       <div class="container mt-3">
         <div class="announcement" id="new-container">
           <!-- New announcements will be dynamically inserted here -->
@@ -227,7 +268,7 @@
       </div>
     </div>
 
-    <!-- Modal Card -->
+    <!-- Modal Card for -->
     <div class="modal-overlay hidden">
       <div class="modal-card">
         <h3 id="modal-title"></h3>

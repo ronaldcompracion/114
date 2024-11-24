@@ -289,3 +289,113 @@ document.querySelectorAll('.poll-option').forEach(option => {
 });
 
 
+
+async function handleSearchAcrossTables(inputId, suggestionsId) {
+  const searchInput = document.getElementById(inputId);
+  const suggestionsList = document.getElementById(suggestionsId);
+
+  // Listen for input events on the search field
+  searchInput.addEventListener("input", async (event) => {
+    const query = event.target.value.trim(); // Get the trimmed input value
+
+    // Hide suggestions if query is empty
+    if (!query) {
+      suggestionsList.style.display = "none";
+      suggestionsList.innerHTML = "";
+      return;
+    }
+
+    try {
+      // Define table names and foreign key mappings
+      const tables = [
+        { name: "New", foreignKey: "new_id" },
+        { name: "Pinned", foreignKey: "pinned_id" },
+        { name: "Old", foreignKey: "old_id" },
+      ];
+
+      let allResults = []; // Array to store combined results from all tables
+
+      // Loop through each table and fetch matching records
+      for (const table of tables) {
+        const { data, error } = await supabase
+          .from(table.name) // Use the table name
+          .select("*") // Select all columns
+          .ilike("title", `%${query}%`); // Match 'title' column with query
+
+        if (error) throw error; // Throw an error if fetch fails
+
+        if (data) {
+          // Map results with additional metadata (table name, foreign key)
+          const resultsWithMetadata = data.map((item) => ({
+            ...item,
+            tableName: table.name,
+            foreignKey: table.foreignKey,
+          }));
+          allResults = allResults.concat(resultsWithMetadata); // Merge results
+        }
+      }
+
+      // Populate suggestions in the list
+      suggestionsList.innerHTML = allResults
+        .map(
+          (item) => `
+          <li class="list-group-item suggestion-item" 
+              data-id="${item[item.foreignKey]}" 
+              data-title="${item.title}" 
+              data-description="${item.description}" 
+              data-date="${item.date}" 
+              data-table="${item.tableName}">
+            ${item.title} <small>(${item.tableName})</small>
+          </li>`
+        )
+        .join("");
+
+      // Show the suggestions list if there are results
+      suggestionsList.style.display = allResults.length ? "block" : "none";
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
+  });
+
+  // Listen for clicks on suggestions
+  suggestionsList.addEventListener("click", (event) => {
+    const suggestionItem = event.target.closest(".suggestion-item");
+    if (suggestionItem) {
+      // Extract metadata from the clicked suggestion
+      const id = suggestionItem.getAttribute("data-id");
+      const title = suggestionItem.getAttribute("data-title");
+      const description = suggestionItem.getAttribute("data-description");
+      const date = suggestionItem.getAttribute("data-date");
+      const tableName = suggestionItem.getAttribute("data-table");
+
+      // Show the modal with populated details
+      showAnnouncementModal(id, title, description, date, tableName);
+    }
+  });
+}
+
+// Function to display the modal with announcement details
+function showAnnouncementModal(id, title, description, date, tableName) {
+  const modalTitle = document.getElementById("modal-title");
+  const modalDescription = document.getElementById("modal-description");
+  const modalDate = document.getElementById("modal-date");
+
+  // Populate modal with the data
+  modalTitle.innerText = title;
+  modalDescription.innerText = description;
+  modalDate.innerText = `Date: ${date}`;
+
+  // Optionally, you can add more data related to the table if needed
+  console.log(`Data from table: ${tableName} with ID: ${id}`);
+
+  // Show the modal
+  document.querySelector(".modal-overlay").classList.remove("hidden");
+}
+
+// Initialize the search functionality
+handleSearchAcrossTables("search-input", "search-suggestions");
+
+// Close modal functionality
+document.querySelector(".close-btn").addEventListener("click", () => {
+  document.querySelector(".modal-overlay").classList.add("hidden");
+});
