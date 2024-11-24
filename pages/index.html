@@ -9,6 +9,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/assets/css/index.css" />
+    <link rel="stylesheet" href="/assets/css/index_admin.css" />
+
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
@@ -20,45 +22,33 @@
   </head>
   <body>
     <!-- Header -->
-    <header class="header">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-2 col-md-auto text-center logo ps-0 ms-n2">
-            <img
-              src="\assets\images\logo\logo.png"
-              alt="CCIS Logo"
-              class="img-fluid mt-1"
-              style="height: 44px"
-            />
-          </div>
-
-          <!-- Text Column -->
-          <div class="col-5 col-md text-start ps-0 ms-n2">
-            <h2 class="mb-2 title">CCIS CONNECT</h2>
-            <p class="mb-0 small">
-              College of Computing and Information Sciences
-            </p>
-          </div>
-
-          <div class="col col-md-auto text-end search">
-            <form class="d-flex position-relative">
-              <input
-                class="form-control rounded-pill extended-search"
-                type="search"
-                aria-label="Search"
-                style="padding-right: 35px"
-              />
-              <span
-                class="position-absolute end-0 top-50 translate-middle-y me-3"
-              >
-                <i class="bi bi-search"></i>
-                <!-- Bootstrap icon class for a search icon -->
-              </span>
-            </form>
-          </div>
+    <header class="header" id="main-header">
+      <div class="row" id="header-row">
+        <div
+          class="col-4 col-md text-start ps-0 ms-n2"
+          id="nav-title-container"
+        >
+          <h3 class="mb-1 title" id="navtitle">NEWS</h3>
         </div>
+
+        <div class="col-8 col-md-auto text-end search pt-1" id="search-container">
+          <form class="d-flex position-relative">
+            <input
+              class="form-control rounded-pill extended-search"
+              type="search"
+              aria-label="Search"
+              style="padding-right: 35px"
+              id="search-input"  
+            />
+            <span class="position-absolute end-0 top-50 translate-middle-y me-3">
+              <i class="bi bi-search"></i>
+            </span>
+          </form>
+        </div>
+        
       </div>
     </header>
+
     <!-- End Header -->
 
     <!-- Navbar -->
@@ -528,41 +518,61 @@
             <!-- Comments Section -->
             <div class="container mt-2 comment-section d-none">
               <div class="row">
-                  <div class="col-12">
-                      <!-- Comments Container -->
-                      <div class="comments-container mt-4">
-                          <!-- Example Comments -->
-                          <div class="d-flex align-items-start m-2 pb-2 comment">
-                              <img src="/assets/images/Profile/profile pic 2.jpg" alt="Profile Picture" class="profile-pic" />
-                              <div class="ms-2">
-                                  <b class="user-name">John Doe</b>
-                                  <p class="comment-text">Congratulations on this amazing achievement!</p>
-                              </div>
-                          </div>
-                          <div class="d-flex align-items-start m-2 pb-2 comment">
-                              <img src="/assets/images/Profile/profile pic 3.jpg" alt="Profile Picture" class="profile-pic" />
-                              <div class="ms-2">
-                                  <b class="user-name">Mike Frost</b>
-                                  <p class="comment-text">Amazing work! Wishing you all the best for the future.</p>
-                              </div>
-                          </div>
+                <div class="col-12">
+                  <!-- Comments Container -->
+                  <div class="comments-container mt-4">
+                    <!-- Example Comments -->
+                    <div class="d-flex align-items-start m-2 pb-2 comment">
+                      <img
+                        src="/assets/images/Profile/profile pic 2.jpg"
+                        alt="Profile Picture"
+                        class="profile-pic"
+                      />
+                      <div class="ms-2">
+                        <b class="user-name">John Doe</b>
+                        <p class="comment-text">
+                          Congratulations on this amazing achievement!
+                        </p>
                       </div>
-                  </div>
-                  <!-- Add Comment Form -->
-                  <div class="col-12 mt-4 pb-2">
-                      <div class="d-flex align-items-start">
-                          <img src="/assets/images/Profile/Profile Pic.png" alt="Your Profile Picture" class="profile-pic" />
-                          <div class="ms-2 flex-grow-1">
-                              <input type="text" class="form-control small-input comment-input" placeholder="Add a comment..." />
-                          </div>
-                          <button class="btn post-btn-custom ms-2 add-comment-btn">
-                              <i class="fas fa-paper-plane"></i>
-                          </button>
+                    </div>
+                    <div class="d-flex align-items-start m-2 pb-2 comment">
+                      <img
+                        src="/assets/images/Profile/profile pic 3.jpg"
+                        alt="Profile Picture"
+                        class="profile-pic"
+                      />
+                      <div class="ms-2">
+                        <b class="user-name">Mike Frost</b>
+                        <p class="comment-text">
+                          Amazing work! Wishing you all the best for the future.
+                        </p>
                       </div>
+                    </div>
                   </div>
+                </div>
+                <!-- Add Comment Form -->
+                <div class="col-12 mt-4 pb-2">
+                  <div class="d-flex align-items-start">
+                    <img
+                      src="/assets/images/Profile/Profile Pic.png"
+                      alt="Your Profile Picture"
+                      class="profile-pic"
+                    />
+                    <div class="ms-2 flex-grow-1">
+                      <input
+                        type="text"
+                        class="form-control small-input comment-input"
+                        placeholder="Add a comment..."
+                      />
+                    </div>
+                    <button class="btn post-btn-custom ms-2 add-comment-btn">
+                      <i class="fas fa-paper-plane"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
-          </div>
-          
+            </div>
+
             <!-- End Comment Display -->
           </div>
 
@@ -690,38 +700,37 @@
             <!-- Comment Display -->
             <div class="container mt-2 comment-section d-none">
               <div class="row">
-                  <div class="col-12">
-                      <!-- Example Comment -->
-                      <div class="comments-container mt-4">
-                          <!-- Dynamic Comments will be inserted here -->
-                      </div>
+                <div class="col-12">
+                  <!-- Example Comment -->
+                  <div class="comments-container mt-4">
+                    <!-- Dynamic Comments will be inserted here -->
                   </div>
-                  <!-- Add Comment Form -->
-                  <div class="col-12 mt-4 pb-2">
-                      <div class="d-flex align-items-start">
-                          <img
-                              src="/assets/images/Profile/Profile Pic.png"
-                              alt="Your Profile Picture"
-                              class="profile-pic"
-                          />
-                          <div class="ms-2 flex-grow-1">
-                              <input
-                                  type="text"
-                                  class="form-control small-input comment-input"
-                                  placeholder="Add a comment..."
-                              />
-                          </div>
-                          <button
-                              class="btn post-btn-custom ms-2 add-comment-btn"
-                          >
-                              <i class="fas fa-paper-plane"></i>
-                          </button>
-                      </div>
+                </div>
+                <!-- Add Comment Form -->
+                <div class="col-12 mt-4 pb-2">
+                  <div class="d-flex align-items-start">
+                    <img
+                      src="/assets/images/Profile/Profile Pic.png"
+                      alt="Your Profile Picture"
+                      class="profile-pic"
+                    />
+                    <div class="ms-2 flex-grow-1">
+                      <input
+                        type="text"
+                        class="form-control small-input comment-input"
+                        placeholder="Add a comment..."
+                      />
+                    </div>
+                    <button class="btn post-btn-custom ms-2 add-comment-btn">
+                      <i class="fas fa-paper-plane"></i>
+                    </button>
                   </div>
+                </div>
               </div>
+            </div>
+
+            <!-- End Reaction -->
           </div>
-          
-          <!-- End Reaction -->
         </div>
       </div>
 
@@ -795,114 +804,134 @@
               <button class="toggle-btn btn btn-link p-0">...See More</button>
             </p>
           </div>
-        <!-- Reaction Area -->
-        <div class="row">
-          <div class="container text-secondary">
-            <hr
-              style="
-                width: 89%;
-                border-color: #ccc;
-                border-width: 2px;
-                margin: 0 auto;
-              "
-            />
-          </div>
+          <!-- Reaction Area -->
+          <div class="row">
+            <div class="container text-secondary">
+              <hr
+                style="
+                  width: 89%;
+                  border-color: #ccc;
+                  border-width: 2px;
+                  margin: 0 auto;
+                "
+              />
+            </div>
 
-          <div class="col-4 interaction">
-            <div class="reaction-container text-center position-relative">
-              <!-- Reaction Emojis Container -->
-              <div id="reactionEmojis" class="reaction-emojis">
-                <span class="emoji" data-reaction="👍">👍</span>
-                <span class="emoji" data-reaction="👏">👏</span>
-                <span class="emoji" data-reaction="❤️">❤️</span>
-                <span class="emoji" data-reaction="😂">😂</span>
-                <span class="emoji" data-reaction="😮">😮</span>
-                <span class="emoji" data-reaction="😢">😢</span>
+            <div class="col-4 interaction">
+              <div class="reaction-container text-center position-relative">
+                <!-- Reaction Emojis Container -->
+                <div id="reactionEmojis" class="reaction-emojis">
+                  <span class="emoji" data-reaction="👍">👍</span>
+                  <span class="emoji" data-reaction="👏">👏</span>
+                  <span class="emoji" data-reaction="❤️">❤️</span>
+                  <span class="emoji" data-reaction="😂">😂</span>
+                  <span class="emoji" data-reaction="😮">😮</span>
+                  <span class="emoji" data-reaction="😢">😢</span>
+                </div>
+
+                <!-- Like Button -->
+                <button id="likeButton" class="reaction-btn btn btn-link">
+                  <i class="fas fa-thumbs-up"></i>
+                  <!-- Like icon -->
+                  <span id="selectedReaction">Reaction</span>
+                </button>
               </div>
-
-              <!-- Like Button -->
-              <button id="likeButton" class="reaction-btn btn btn-link">
-                <i class="fas fa-thumbs-up"></i>
-                <!-- Like icon -->
-                <span id="selectedReaction">Reaction</span>
-              </button>
             </div>
-          </div>
-          <!-- Comment Button -->
-          <div class="col-4 text-secondary interaction">
-            <div class="interaction-item comment-toggle">
-              <i class="fas fa-comment"></i>
-              <span>Comments</span>
+            <!-- Comment Button -->
+            <div class="col-4 text-secondary interaction">
+              <div class="interaction-item comment-toggle">
+                <i class="fas fa-comment"></i>
+                <span>Comments</span>
+              </div>
             </div>
-          </div>
 
-          <!-- End Comment -->
+            <!-- End Comment -->
 
-          <!-- Favorites -->
-          <div class="col-4 text-secondary interaction">
-            <div class="interaction-item favorite-toggle">
-              <i class="fas fa-heart"></i>
-              <span>Add to Favorites</span>
+            <!-- Favorites -->
+            <div class="col-4 text-secondary interaction">
+              <div class="interaction-item favorite-toggle">
+                <i class="fas fa-heart"></i>
+                <span>Add to Favorites</span>
+              </div>
             </div>
+
+            <!-- End Favorites -->
+
+            <!-- Comment Display -->
+
+            <!-- Comments Section -->
+            <!-- Comments Section -->
+            <div class="container mt-2 comment-section d-none">
+              <div class="row">
+                <div class="col-12">
+                  <!-- Example Comment -->
+                  <div class="comments-container mt-4">
+                    <!-- Existing Comments -->
+                    <div class="d-flex align-items-start m-2 pb-2 comment">
+                      <img
+                        src="/assets/images/Profile/profile pic 2.jpg"
+                        alt="Profile Picture"
+                        class="profile-pic"
+                      />
+                      <div class="ms-2">
+                        <b class="user_name">John Doe</b>
+                        <p class="comment-text">
+                          Congratulations on this amazing achievement!
+                        </p>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start m-2 mb-2 comment">
+                      <img
+                        src="/assets/images/Profile/profile pic 3.jpg"
+                        alt="Profile Picture"
+                        class="profile-pic"
+                      />
+                      <div class="ms-2">
+                        <b class="user_name">Mike Frost</b>
+                        <p class="comment-text">
+                          Amazing work! Wishing you all the best for the future.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Add Comment Form -->
+                <div class="col-12 mt-4 pb-2">
+                  <div class="d-flex align-items-start">
+                    <img
+                      src="/assets/images/Profile/Profile Pic.png"
+                      alt="Your Profile Picture"
+                      class="profile-pic"
+                    />
+                    <div class="ms-2 flex-grow-1">
+                      <input
+                        type="text"
+                        class="form-control small-input comment-input"
+                        placeholder="Add a comment..."
+                      />
+                    </div>
+                    <button class="btn post-btn-custom ms-2 add-comment-btn">
+                      <i class="fas fa-paper-plane"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- End Comment Display -->
           </div>
 
-          <!-- End Favorites -->
-
-          <!-- Comment Display -->
-
-          <!-- Comments Section -->
-          <!-- Comments Section -->
-<div class="container mt-2 comment-section d-none">
-  <div class="row">
-    <div class="col-12">
-      <!-- Example Comment -->
-      <div class="comments-container mt-4">
-        <!-- Existing Comments -->
-        <div class="d-flex align-items-start m-2 pb-2 comment">
-          <img src="/assets/images/Profile/profile pic 2.jpg" alt="Profile Picture" class="profile-pic" />
-          <div class="ms-2">
-            <b class="user_name">John Doe</b>
-            <p class="comment-text">Congratulations on this amazing achievement!</p>
-          </div>
-        </div>
-        <div class="d-flex align-items-start m-2 mb-2 comment">
-          <img src="/assets/images/Profile/profile pic 3.jpg" alt="Profile Picture" class="profile-pic" />
-          <div class="ms-2">
-            <b class="user_name">Mike Frost</b>
-            <p class="comment-text">Amazing work! Wishing you all the best for the future.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Add Comment Form -->
-    <div class="col-12 mt-4 pb-2">
-      <div class="d-flex align-items-start">
-        <img src="/assets/images/Profile/Profile Pic.png" alt="Your Profile Picture" class="profile-pic" />
-        <div class="ms-2 flex-grow-1">
-          <input type="text" class="form-control small-input comment-input" placeholder="Add a comment..." />
-        </div>
-        <button class="btn post-btn-custom ms-2 add-comment-btn">
-          <i class="fas fa-paper-plane"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-          <!-- End Comment Display -->
-        </div>
-
-        <!-- End Reaction -->
+          <!-- End Reaction -->
         </div>
       </div>
       <!-- End Third Card -->
+    </div>
 
-  
-<br>
-<br>
-<br>
-<br>
+    <br />
+    <br />
+    <br />
+    <br />
 
     <!-- </div> -->
     <link
@@ -914,6 +943,10 @@
 
     <!-- JS -->
     <script src="/assets/js/newsfeed.js"></script>
+    <script src="/assets/js/index_admin.js" type="module"></script>
+    <!-- Fuse JS for Search -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+
 
     <!-- JS NAVBAR -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>

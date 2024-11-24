@@ -55,16 +55,10 @@ function renderAnnouncements(announcements, containerId, tableName) {
     const announcementElement = document.createElement("div");
     announcementElement.classList.add("row");
 
-    // Only show the thumbtack icon for the 'Pinned' section
-    const thumbtackIcon =
-      tableName === "Pinned"
-        ? '<i class="fas fa-thumbtack pinned-icon"></i>'
-        : "";
-
     // Build the HTML for each announcement
     announcementElement.innerHTML = `
       <div class="col-1">
-        ${thumbtackIcon}
+       
       </div>
       <div class="col-9 clickable-area" data-title="${announcement.title}" data-description="${announcement.description}" data-date="${announcement.date}" data-id="${announcement.id}" data-table="${tableName}">
         <b id="tit2">${announcement.title}</b>

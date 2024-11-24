@@ -431,3 +431,9 @@ i,
   border-bottom: 1px solid #e6e6e6; /* Add separation */
 }
 
+/* Search */
+.highlight {
+  background-color: yellow; /* Highlight color */
+  font-weight: bold; /* Optional: make the highlighted text bold */
+  color: black; /* Optional: change the text color to black */
+}

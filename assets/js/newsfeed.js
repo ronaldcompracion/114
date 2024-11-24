@@ -268,3 +268,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+
+// Function to filter and highlight cards based on search input
+function searchCards() {
+    const searchQuery = document.getElementById('search-input').value.trim().toLowerCase();  // Get the search query
+    const cards = document.querySelectorAll('.card');  // Select all cards
+    
+    // If search query is empty, show all cards and reset highlights
+    if (searchQuery === "") {
+      cards.forEach(card => {
+        card.style.display = '';  // Show all cards when search input is empty
+        resetHighlights(card);  // Reset highlights if search is cleared
+      });
+      return;
+    }
+  
+    // Loop through each card and check if any part of the card content includes the search query
+    cards.forEach(card => {
+      const titleElement = card.querySelector('.title');
+      const descriptionElement = card.querySelector('.card-text');
+      const profileNameElement = card.querySelector('.user_name');
+      
+      const title = titleElement ? titleElement.textContent.toLowerCase() : '';
+      const description = descriptionElement ? descriptionElement.textContent.toLowerCase() : '';
+      const profileName = profileNameElement ? profileNameElement.textContent.toLowerCase() : '';
+  
+      // Check if any part of the card content includes the search query
+      const matches = title.includes(searchQuery) || description.includes(searchQuery) || profileName.includes(searchQuery);
+  
+      if (matches) {
+        card.style.display = '';  // Show card if it matches
+        // Highlight matched text in the title, description, and profile name
+        if (titleElement) highlightText(titleElement, searchQuery);
+        if (descriptionElement) highlightText(descriptionElement, searchQuery);
+        if (profileNameElement) highlightText(profileNameElement, searchQuery);
+      } else {
+        card.style.display = 'none';  // Hide card if it doesn't match
+        resetHighlights(card);  // Reset highlights if the card is hidden
+      }
+    });
+  }
+  
+  // Function to highlight matched text in the specified element
+  function highlightText(element, searchQuery) {
+    const regex = new RegExp(`(${searchQuery})`, 'gi');  // Case-insensitive regex to match the query
+    element.innerHTML = element.textContent.replace(regex, '<span class="highlight">$1</span>');
+  }
+  
+  // Function to reset highlights in the card
+  function resetHighlights(card) {
+    const highlightedText = card.querySelectorAll('.highlight');
+    highlightedText.forEach(highlight => {
+      highlight.outerHTML = highlight.textContent;  // Remove the highlight span and restore original text
+    });
+  }
+  
+  // Add an event listener to the search input
+  document.getElementById('search-input').addEventListener('input', searchCards);
+  
