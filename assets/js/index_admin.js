@@ -150,7 +150,7 @@ async function fetchNews() {
                 </div>
                 <div class="profile-info text-start">
                   <p class="user_name mt-1">College of Computing and Information Sciences - Caraga State University</p>
-                  <small class="date">${new Date(
+                  <small class="date"><b>Posted: </b>${new Date(
                     newsItem.created_at
                   ).toLocaleDateString()}</small>
                 </div>
@@ -176,23 +176,38 @@ async function fetchNews() {
             <!-- Content (Images, Title, Description) -->
             <div class="container">
               <div class="row pt-2 pb-">
-                <small class="text-secondary title p-2">${
-                  newsItem.title
-                }</small>
+                <small class="text-secondary title p-2">${newsItem.title}</small>
               </div>
               <div class="row g-0">
-                <div class="col-8 p-1">
-                  <img src="${
-                    newsItem.img_1 || fallbackImage
-                  }" class="img-fluid w-100 h-100" alt="${newsItem.title}" />
-                </div>
-                <div class="col-4 p-1">
-                  <img src="${
-                    newsItem.img_2 || fallbackImage
-                  }" class="img-fluid w-100 h-100" alt="${newsItem.title}" />
-                </div>
-              </div>
+  ${
+    newsItem.img_1 && !newsItem.img_2
+      ? `
+        <!-- Render only img_1 if img_2 is absent -->
+        <div class="col-12 p-1 text-center">
+          <img src="${newsItem.img_1 || fallbackImage}" class="img-fluid w-100 h-100" alt="${newsItem.title}" />
+        </div>
+      `
+      : newsItem.img_1 && newsItem.img_2
+      ? `
+        <!-- Render img_1 and img_2 if both exist -->
+        <div class="col-8 p-1">
+          <img src="${newsItem.img_1 || fallbackImage}" class="img-fluid w-100 h-100" alt="${newsItem.title}" />
+        </div>
+        <div class="col-4 p-1">
+          <img src="${newsItem.img_2 || fallbackImage}" class="img-fluid w-100 h-100" alt="${newsItem.title}" />
+        </div>
+      `
+      : `
+        <!-- Fallback image if no images exist -->
+        <div class="col-12 p-1 text-center">
+          <img src="${fallbackImage}" class="img-fluid w-100 h-100" alt="Default Placeholder" />
+        </div>
+      `
+  }
+</div>
+
             </div>
+
             <div class="card-body text-secondary">
               <p class="card-text cardtext">
                 <span class="preview-text">${newsItem.description.substring(
@@ -428,8 +443,8 @@ function displaySearchSuggestions(results) {
       }
 
       // Populate modal with news details
-          const modalContent = document.getElementById("modal-content");
-          modalContent.innerHTML = `
+      const modalContent = document.getElementById("modal-content");
+      modalContent.innerHTML = `
       <h3>${newsItem.title}</h3>
       <p>${newsItem.description}</p>
       <div class="row g-2 my-3">

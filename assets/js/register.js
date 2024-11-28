@@ -8,35 +8,68 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 const signupForm = document.getElementById("signupForm");
 
 signupForm.onsubmit = async (event) => {
-    event.preventDefault();
-  
-    const firstname = document.getElementById("firstname").value;
-    const lastname = document.getElementById("lastname").value;
-    const idnumber = document.getElementById("idnumber").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const confirmpassword = document.getElementById("confirmpassword").value;
-  
-    if (password !== confirmpassword) {
-      alert("Passwords do not match.");
-      return;
+  event.preventDefault();
+
+  const firstname = document.getElementById("firstname").value;
+  const lastname = document.getElementById("lastname").value;
+  const idnumber = document.getElementById("idnumber").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const confirmpassword = document.getElementById("confirmpassword").value;
+
+  if (password !== confirmpassword) {
+    alert("Passwords do not match.");
+    return;
+  }
+
+  try {
+    // Step 1: Fetch the highest existing ID
+    const { data: maxIdData, error: maxIdError } = await supabase
+      .from("users")
+      .select("id")
+      .order("id", { ascending: false })
+      .limit(1);
+
+    if (maxIdError) {
+      console.error("Error fetching the highest ID:", maxIdError);
+      throw new Error("Failed to retrieve the latest ID from the database.");
     }
 
-    // Insert user data into the 'users' table
-    try {
-      const { data, error } = await supabase
-        .from("users")  // Reference to your 'users' table in the public schema
-        .insert([{ email, password, f_name: firstname, l_name: lastname, id_number: idnumber }]);  // Insert the full details
+    // Step 2: Calculate the new ID
+    const nextId = maxIdData.length > 0 ? maxIdData[0].id + 1 : 1;
+    console.log("Next ID:", nextId);
 
-      if (error) {
-        console.error("User Insert Error:", error);
-        throw new Error("Error inserting user details into the users table.");
-      }
+    // Step 3: Insert the new user with the calculated ID
+    console.log("Inserting data with the following payload:");
+    console.log({
+      id: nextId,
+      email,
+      password,
+      f_name: firstname,
+      l_name: lastname,
+      id_number: idnumber,
+    });
 
-      alert("Account created successfully!");
-      signupForm.reset();
-    } catch (err) {
-      console.error("Registration Error:", err);
-      alert(`Registration failed: ${err.message}`);
+    const { data, error } = await supabase
+      .from("users")
+      .insert([{ 
+        id: nextId, 
+        email, 
+        password, 
+        f_name: firstname, 
+        l_name: lastname, 
+        id_number: idnumber 
+      }]);
+
+    if (error) {
+      console.error("User Insert Error:", error);
+      throw new Error("Error inserting user details into the users table.");
     }
+
+    alert("Account created successfully!");
+    signupForm.reset();
+  } catch (err) {
+    console.error("Registration Error:", err);
+    alert(`Registration failed: ${err.message}`);
+  }
 };

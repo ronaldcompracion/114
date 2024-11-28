@@ -80,7 +80,7 @@
   
   /* Change icon color back to orange when inactive */
   .check-btn .check-icon {
-    color: #ea8934;  /* Orange icon when inactive */
+    color: #ffffff;  /* Orange icon when inactive */
   }
   
   /* Style for the small text (add id) */
@@ -218,7 +218,7 @@
   
   /* Active state when the checkbox is checked */
   .custom-save-btn.active {
-    background-color: #b85c1f;
+    background-color: #ffffff;
     border-color: #b85c1f;
   }
   

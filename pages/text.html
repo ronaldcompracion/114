@@ -1,74 +1,958 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Result Modal</title>
-    <link rel="stylesheet" href="/assets/css/index.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCIS CONNECT</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/assets/css/index.css" />
     <link rel="stylesheet" href="/assets/css/index_admin.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
 
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
     />
-</head>
-<body>
-  
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
     <!-- Header -->
-    <header class="header">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-2 col-md-auto text-center logo ps-0 ms-n2">
-            
-          </div>
+    <header class="header" id="main-header">
+      <div class="row" id="header-row">
+        <div
+          class="col-4 col-md text-start ps-0 ms-n2"
+          id="nav-title-container"
+        >
+          <h3 class="mb-1 title" id="navtitle">NEWS</h3>
+        </div>
 
-          <!-- Text Column -->
-          <div class="col-5 col-md text-start ps-0 ms-n2">
-            <h3 class="mb-2 title" id="navtitle">NEWS PAGE</h3>
-          </div>
+        <div class="col-8 col-md-auto text-end search pt-1" id="search-container">
+          <form class="d-flex position-relative">
+            <input
+              class="form-control rounded-pill extended-search"
+              type="search"
+              aria-label="Search"
+              style="padding-right: 35px"
+              placeholder="Search News"
+              id="search-input"  
+            />
+            <span class="position-absolute end-0 top-50 translate-middle-y me-3">
+              <i class="bi bi-search"></i>
+            </span>
+          </form>
+        </div>
+        
+      </div>
+    </header>
 
-          <div class="col col-md-auto text-end search">
-            <form class="d-flex position-relative">
-              <input
-                class="form-control rounded-pill extended-search"
-                type="search"
-                aria-label="Search"
-                id="searchInput"
-                style="padding-right: 35px"
-              />
-              <span
-                class="position-absolute end-0 top-50 translate-middle-y me-3"
-              >
-                <i class="bi bi-search"></i>
-              </span>
-              <div
-                class="suggestions bg-white shadow-sm rounded mt-1"
-                id="suggestions"
-                style="position: absolute; z-index: 1000; width: 100%; display: none;"
-              ></div>
-            </form>
-            
-            
+    <!-- End Header -->
+
+    <!-- Navbar -->
+
+    <!-- Navigation Bar -->
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+      <div class="container-fluid pl-4">
+        <div class="row w-100 text-center">
+          <div class="col-3">
+            <a class="nav-link btn-nav" href="/pages/index.html">
+              <i class="fas fa-newspaper"></i>
+              <span>News</span>
+            </a>
+          </div>
+          <div class="col-3">
+            <a class="nav-link btn-nav" href="/pages/Announcement.html">
+              <i class="fas fa-bullhorn"></i>
+              <span class="asq">Announcement</span>
+            </a>
+          </div>
+          <div class="col-3">
+            <a class="nav-link btn-nav" href="/pages/Profile.html">
+              <i class="fas fa-user"></i>
+              <span clas>Profile</span>
+            </a>
+          </div>
+          <div class="col-3">
+            <a class="nav-link btn-nav" href="/pages/Settings.html">
+              <i class="fas fa-cog"></i>
+              <span>Settings</span>
+            </a>
           </div>
         </div>
       </div>
-    </header>
-    <!-- End Header -->
-</body>
+    </nav>
+
+    <!-- End Navbar -->
+
+    <!-- Start Carousel -->
+    <div class="carousel-container">
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide pt-2"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="/assets/images/Slides/1.png"
+              class="d-block w-100"
+              alt="First slide"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="/assets/images/Slides/2.jpg"
+              class="d-block w-100"
+              alt="Second slide"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="/assets/images/Slides/3.jpg"
+              class="d-block w-100"
+              alt="Third slide"
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <!-- End Carousel -->
+
+    <!-- Content Cards -->
+    <div class="container">
+      <!-- First Card -->
+      <div class="col-md-4 p-3">
+        <div class="card">
+          <!-- Profile -->
+          <div class="container mt-2">
+            <div class="profile-container">
+              <div class="profilepic">
+                <img
+                  src="/assets/images/Profile/Profile Pic.png"
+                  alt="Profile Picture"
+                  width="50px"
+                />
+              </div>
+              <div class="profile-info text-start">
+                <p class="user_name mt-1">
+                  College of Computing and Information Sciences - Caraga State
+                  University
+                </p>
+                <small class="date">October 31, 2024</small>
+              </div>
+            </div>
+          </div>
+          <!--  End Profile -->
+          <div class="container">
+            <div class="row pt-2 pb-">
+              <small class="text-secondary title p-2"
+                >𝑨𝒄𝒉𝒊𝒆𝒗𝒆𝒎𝒆𝒏𝒕 𝑼𝒏𝒍𝒐𝒄𝒌𝒆𝒅 | 𝟐𝐧𝐝 𝐘𝐞𝐚𝐫 𝐁𝐒𝐈𝐓 𝐒𝐭𝐮𝐝𝐞𝐧𝐭 𝐟𝐫𝐨𝐦 𝐂𝐒𝐔 𝐐𝐮𝐚𝐥𝐢𝐟𝐢𝐞𝐬
+                𝐟𝐨𝐫 𝐭𝐡𝐞 𝐇𝐚𝐜𝐤𝟒𝐆𝐨𝐯 𝐈𝐧𝐭𝐞𝐫𝐧𝐚𝐭𝐢𝐨𝐧𝐚𝐥 𝐂𝐨𝐦𝐩𝐞𝐭𝐢𝐭𝐢𝐨𝐧</small
+              >
+            </div>
+            <div class="row g-0">
+              <div class="col-8 p-1">
+                <img
+                  src="/assets/images/News Feed/1.jpg"
+                  class="img-fluid w-100 h-100"
+                  alt="CCIS Achievement"
+                />
+              </div>
+              <div class="col-4 p-1">
+                <img
+                  src="/assets/images/News Feed/2.jpg"
+                  class="img-fluid w-100"
+                  alt="CCIS Achievement"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body text-secondary">
+            <p class="card-text cardtext">
+              <span class="preview-text">
+                It was a proud moment for our BSIT 2nd year student,
+                <b>Mr. Drandreb B. Reyes</b> as his wildcard team, “Captcha”
+                composed of highest individual score from other regions, just
+                clinched
+                <b
+                  >2nd place in this year's 2023 Hack4Gov National
+                  Competition</b
+                >. The competition was held last October 16, 2023 in Manila
+                Grand
+              </span>
+              <span class="more-text" style="display: none">
+                Opera Hotel, Santa Cruz Manila. Team “AdDU” from Ateneo de Davao
+                University hailed as the Champion of this year's 2023 Hack4Gov
+                National Competition. Last August 2023, Mr. Drandreb B. Reyes,
+                together with his teammates “Kr4ken” of Caraga State University
+                bagged 1st runner-up in the Hack4Gov Capture the Flag Regional
+                Qualifying Round, with FSUU team winning the Hack4Gov
+                competition. During the competition, Mr. Drandreb B. Reyes
+                achieved the highest individual score and earned a spot in the
+                wildcard representing Mindanao Region. Mr. Drandreb B. Reyes
+                will be one of the representatives of the Philippines in the
+                International Competition as he scored among the highest in the
+                2023 Hack4Gov National Competition, mentored by Mr. John Michael
+                F. Cutamora.
+              </span>
+              <button class="toggle-btn btn btn-link p-0">...See More</button>
+            </p>
+          </div>
+          <!-- Reaction Area -->
+          <div class="row">
+            <div class="container text-secondary">
+              <hr
+                style="
+                  width: 89%;
+                  border-color: #ccc;
+                  border-width: 2px;
+                  margin: 0 auto;
+                "
+              />
+            </div>
+
+            <div class="col-4 interaction">
+              <div class="reaction-container text-center position-relative">
+                <!-- Reaction Emojis Container -->
+                <div id="reactionEmojis" class="reaction-emojis">
+                  <span class="emoji" data-reaction="👍">👍</span>
+                  <span class="emoji" data-reaction="👏">👏</span>
+                  <span class="emoji" data-reaction="❤️">❤️</span>
+                  <span class="emoji" data-reaction="😂">😂</span>
+                  <span class="emoji" data-reaction="😮">😮</span>
+                  <span class="emoji" data-reaction="😢">😢</span>
+                </div>
+
+                <!-- Like Button -->
+                <button id="likeButton" class="reaction-btn btn btn-link">
+                  <i class="fas fa-thumbs-up"></i>
+                  <!-- Like icon -->
+                  <span id="selectedReaction">Reaction</span>
+                </button>
+              </div>
+            </div>
+            <!-- Comment Button -->
+            <div class="col-4 text-secondary interaction">
+              <div class="interaction-item comment-toggle">
+                <i class="fas fa-comment"></i>
+                <span>Comments</span>
+              </div>
+            </div>
+
+            <!-- End Comment -->
+
+            <!-- Favorites -->
+            <div class="col-4 text-secondary interaction">
+              <div class="interaction-item favorite-toggle">
+                <i class="fas fa-heart"></i>
+                <span>Add to Favorites</span>
+              </div>
+            </div>
+
+            <!-- End Favorites -->
+
+            <!-- Comment Display -->
+
+            <!-- Comments Section -->
+            <div class="container mt-2 comment-section d-none">
+              <div class="row">
+                <div class="col-12">
+                  <!-- Example Comment -->
+
+                  <div id="commentsContainer" class="mt-4">
+                    <!-- Existing Comments -->
+                    <!-- Comment 1 -->
+                    <div class="d-flex align-items-start m-2 pb-2 comment">
+                      <img
+                        src="/assets/images/Profile/profile pic 2.jpg"
+                        alt="Profile Picture"
+                        class="profile-pic"
+                      />
+                      <div class="ms-2">
+                        <b id="user_name">John Doe</b>
+                        <p class="comment-text">
+                          Congratulations on this amazing achievement!
+                        </p>
+                      </div>
+                    </div>
+                    <!-- Comment 2 -->
+                    <div class="d-flex align-items-start m-2 mb-2 comment">
+                      <img
+                        src="/assets/images/Profile/profile pic 3.jpg"
+                        alt="Profile Picture"
+                        class="profile-pic"
+                      />
+                      <div class="ms-2">
+                        <b id="user_name">Mike Frost</b>
+                        <p class="comment-text">
+                          Amazing work! Wishing you all the best for the future.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Add Comment Form -->
+                <div class="col-12 mt-4 pb-2">
+                  <!-- Add Comment Input -->
+                  <div class="d-flex align-items-start">
+                    <img
+                      src="/assets/images/Profile/Profile Pic.png"
+                      alt="Your Profile Picture"
+                      class="profile-pic"
+                    />
+                    <div class="ms-2 flex-grow-1">
+                      <input
+                        type="text"
+                        class="form-control small-input"
+                        id="commentInput"
+                        placeholder="Add a comment..."
+                      />
+                    </div>
+                    <button class="btn post-btn-custom ms-2" id="addCommentBtn">
+                      <i class="fas fa-paper-plane"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- End Add Comment Form -->
+              </div>
+            </div>
+            <!-- End Comment Display -->
+          </div>
+
+          <!-- End Reaction -->
+        </div>
+      </div>
+      <!-- End First Card -->
+      <!-- Second Card -->
+      <div class="col-md-4 p-3">
+        <div class="card">
+          <!-- Profile -->
+          <div class="container mt-2">
+            <div class="profile-container">
+              <div class="profilepic">
+                <img
+                  src="/assets/images/Profile/Profile Pic.png"
+                  alt="Profile Picture"
+                  width="50px"
+                />
+              </div>
+              <div class="profile-info text-start">
+                <p class="user_name mt-1">
+                  College of Computing and Information Sciences - Caraga State
+                  University
+                </p>
+                <small class="date">October 31, 2024</small>
+              </div>
+            </div>
+          </div>
+          <!--  End Profile -->
+          <div class="container">
+            <div class="row pt-2 pb-">
+              <small class="text-secondary title p-2"
+                >𝐒𝐓𝐄𝐋𝐋𝐀.𝐚𝐢 𝐓𝐫𝐢𝐮𝐦𝐩𝐡𝐬 𝐚𝐭 𝐏𝐡𝐢𝐥𝐢𝐩𝐩𝐢𝐧𝐞 𝐒𝐭𝐚𝐫𝐭𝐮𝐩 𝐂𝐡𝐚𝐥𝐥𝐞𝐧𝐠𝐞 𝟗 𝐑𝐞𝐠𝐢𝐨𝐧𝐚𝐥
+                𝐏𝐢𝐭𝐜𝐡𝐢𝐧𝐠 𝐂𝐨𝐦𝐩𝐞𝐭𝐢𝐭𝐢𝐨𝐧 | 𝐎𝐜𝐭𝐨𝐛𝐞𝐫 𝟏𝟓, 𝟐𝟎𝟐𝟒</small
+              >
+            </div>
+            <div class="row g-0">
+              <div class="col-8 p-1">
+                <img
+                  src="/assets/images/News Feed/10.jpg"
+                  class="img-fluid w-100 h-100"
+                  alt="CCIS Achievement"
+                />
+              </div>
+              <div class="col-4 p-1">
+                <img
+                  src="/assets/images/News Feed/11.jpg"
+                  class="img-fluid w-100 h-100"
+                  alt="CCIS Achievement"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body text-secondary">
+            <p class="card-text cardtext">
+              <span class="preview-text">
+                𝐒𝐓𝐄𝐋𝐋𝐀.𝐚𝐢, a standout project from Navigatu’s incubator program,
+                claimed 1st place at the Philippine Startup Challenge 9 (PSC 9)
+                Regional Pitching Competition, held on October 15, 2024, at the
+                CBE Function Hall, Father Saturnino Urios University, Butuan
+                City. This victory marks Navigatu’s fourth consecutive win at
+                the regional level of the PSC, a testament to the incubator’s
+                continued excellence in fostering innovative startups.
+              </span>
+              <span class="more-text" style="display: none">
+                🎉 STELLA.ai is poised to revolutionize stroke detection through
+                the power of artificial intelligence. Originally conceived as a
+                Capstone project by 𝐌𝐫. 𝐅𝐫𝐚𝐧𝐜𝐢𝐬 𝐉𝐨𝐡𝐧 𝐒𝐚𝐮𝐥 𝐓𝐢𝐧-𝐚𝐨, 𝐌𝐬. 𝐑𝐡𝐞𝐚 𝐁𝐞𝐭𝐞,
+                and 𝐌𝐫. 𝐀𝐧𝐠𝐞𝐥𝐨 𝐆𝐚𝐥𝐨𝐩𝐞, 4th year BS Information Technology
+                students at Caraga State University, the innovation was further
+                refined under the mentorship of 𝐌𝐫. 𝐉𝐚𝐦𝐞𝐬 𝐄𝐚𝐫𝐥 𝐂𝐮𝐛𝐢𝐥𝐥𝐚𝐬, a
+                Computer Science faculty member and Center Chief of the Virtual
+                Learning Resource Center (VLRC). In recognition of their
+                outstanding work, the team received the prestigious “𝐁𝐞𝐬𝐭 𝐢𝐧
+                𝐕𝐢𝐝𝐞𝐨 𝐏𝐢𝐭𝐜𝐡 𝐀𝐰𝐚𝐫𝐝,” highlighting the project’s potential to
+                significantly advance medical diagnostics using AI-driven
+                solutions. AgriSell, from North Eastern Mindanao State
+                University, secured 2nd place, while BayaniBlue Aquaculture
+                Solutions from Caraga State University-Cabadbaran Campus took
+                3rd place. Both projects are part of the TARA Agri-Aqua TBI
+                incubation program, Caraga State University’s second Technology
+                Business Incubator. The Philippine Startup Challenge, organized
+                annually by the Department of Information and Communications
+                Technology (DICT) through its ICT Industry Development Bureau
+                (IIDB), aims to inspire young Filipino entrepreneurs to develop
+                innovative ICT products and services that address key societal
+                issues and drive entrepreneurial growth. As the regional
+                champion, STELLA.ai will have the chance to represent the Caraga
+                region in the upcoming PSC 9 National Pitching Competition later
+                this year. 🚀 Congratulations to all the winners and
+                participants for their outstanding contributions! 🎉 #CSU
+                #Navigatu #STELLAai #Technopreneurship #Innovation
+                #StrokeDetection #CaragaRISE #PSC9 #DICT
+              </span>
+              <button class="toggle-btn btn btn-link p-0">...See More</button>
+            </p>
+          </div>
+          <!-- Reaction Area -->
+          <div class="row">
+            <div class="container text-secondary">
+              <hr
+                style="
+                  width: 89%;
+                  border-color: #ccc;
+                  border-width: 2px;
+                  margin: 0 auto;
+                "
+              />
+            </div>
+
+            <div class="col-4 interaction">
+              <div class="reaction-container text-center position-relative">
+                <!-- Reaction Emojis Container -->
+                <div id="reactionEmojis" class="reaction-emojis">
+                  <span class="emoji" data-reaction="👍">👍</span>
+                  <span class="emoji" data-reaction="👏">👏</span>
+                  <span class="emoji" data-reaction="❤️">❤️</span>
+                  <span class="emoji" data-reaction="😂">😂</span>
+                  <span class="emoji" data-reaction="😮">😮</span>
+                  <span class="emoji" data-reaction="😢">😢</span>
+                </div>
+
+                <!-- Like Button -->
+                <button id="likeButton" class="reaction-btn btn btn-link">
+                  <i class="fas fa-thumbs-up"></i>
+                  <!-- Like icon -->
+                  <span id="selectedReaction">Reaction</span>
+                </button>
+              </div>
+            </div>
+            <!-- Comment Button -->
+            <div class="col-4 text-secondary interaction">
+              <div class="interaction-item comment-toggle">
+                <i class="fas fa-comment"></i>
+                <span>Comments</span>
+              </div>
+            </div>
+
+            <!-- End Comment -->
+
+            <!-- Favorites -->
+            <div class="col-4 text-secondary interaction">
+              <div class="interaction-item favorite-toggle">
+                <i class="fas fa-heart"></i>
+                <span>Add to Favorites</span>
+              </div>
+            </div>
+
+            <!-- End Favorites -->
+
+            <!-- Comment Display -->
+
+            <!-- Comments Section -->
+            <div class="container mt-2 comment-section d-none">
+              <div class="row">
+                <div class="col-12">
+                  <!-- Comments Container -->
+                  <div class="comments-container mt-4">
+                    <!-- Example Comments -->
+                    <div class="d-flex align-items-start m-2 pb-2 comment">
+                      <img
+                        src="/assets/images/Profile/profile pic 2.jpg"
+                        alt="Profile Picture"
+                        class="profile-pic"
+                      />
+                      <div class="ms-2">
+                        <b class="user-name">John Doe</b>
+                        <p class="comment-text">
+                          Congratulations on this amazing achievement!
+                        </p>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start m-2 pb-2 comment">
+                      <img
+                        src="/assets/images/Profile/profile pic 3.jpg"
+                        alt="Profile Picture"
+                        class="profile-pic"
+                      />
+                      <div class="ms-2">
+                        <b class="user-name">Mike Frost</b>
+                        <p class="comment-text">
+                          Amazing work! Wishing you all the best for the future.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Add Comment Form -->
+                <div class="col-12 mt-4 pb-2">
+                  <div class="d-flex align-items-start">
+                    <img
+                      src="/assets/images/Profile/Profile Pic.png"
+                      alt="Your Profile Picture"
+                      class="profile-pic"
+                    />
+                    <div class="ms-2 flex-grow-1">
+                      <input
+                        type="text"
+                        class="form-control small-input comment-input"
+                        placeholder="Add a comment..."
+                      />
+                    </div>
+                    <button class="btn post-btn-custom ms-2 add-comment-btn">
+                      <i class="fas fa-paper-plane"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- End Comment Display -->
+          </div>
+
+          <!-- End Reaction -->
+        </div>
+      </div>
+      <!-- End Second Card -->
+      <!-- Second Card -->
+      <div class="col-md-4 p-3">
+        <div class="card">
+          <!-- Profile -->
+          <div class="container mt-2">
+            <div class="profile-container">
+              <div class="profilepic">
+                <img
+                  src="/assets/images/Profile/Profile Pic.png"
+                  alt="Profile Picture"
+                  width="50px"
+                />
+              </div>
+              <div class="profile-info text-start">
+                <p class="user_name mt-1">
+                  College of Computing and Information Sciences - Caraga State
+                  University
+                </p>
+                <small class="date">October 31, 2024</small>
+              </div>
+            </div>
+          </div>
+          <!--  End Profile -->
+
+          <div class="container">
+            <div class="row pt-2 pb-">
+              <small class="text-secondary title p-2"
+                >𝐂𝐚𝐩𝐭𝐮𝐫𝐞 𝐭𝐡𝐞 𝐅𝐥𝐚𝐠 𝐇𝐚𝐜𝐤𝟒𝐆𝐨𝐯 𝐂𝐨𝐦𝐩𝐞𝐭𝐢𝐭𝐢𝐨𝐧 𝟐𝟎𝟐𝟒</small
+              >
+            </div>
+            <div class="row g-0">
+              <div class="col-8 p-1">
+                <img
+                  src="/assets/images/News Feed/3.jpg"
+                  class="img-fluid w-100 h-100"
+                  alt="CCIS Achievement"
+                />
+              </div>
+              <div class="col-4 p-1">
+                <img
+                  src="/assets/images/News Feed/4.jpg"
+                  class="img-fluid w-100 h-100"
+                  alt="CCIS Achievement"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body text-secondary">
+            <p class="card-text cardtext">
+              <span class="preview-text">
+                The CSU Team - CarSU CyberNinja, represented by four (4) CCIS
+                students and coached by Mr. John Michael Cutamora, was declared
+                CHAMPION in the DICT's regional Hack4Gov Competition 2024.
+                Participated by 13 teams and 52 students from various State
+                Universities and Colleges (SUCs) and Higher Education
+                Institutions (HEIs) in Caraga Region,...
+              </span>
+              <span class="more-text" style="display: none">
+                the event was held today, 23rd of August at the Almont Inland
+                Resort, Butuan City. The team will represent Caraga in the
+                national competitions to be held on October 2024.
+              </span>
+              <button class="toggle-btn btn btn-link p-0">See More</button>
+            </p>
+          </div>
+
+          <!-- Reaction Area -->
+          <div class="row">
+            <div class="container text-secondary">
+              <hr
+                style="
+                  width: 89%;
+                  border-color: #ccc;
+                  border-width: 2px;
+                  margin: 0 auto;
+                "
+              />
+            </div>
+
+            <div class="col-4 interaction">
+              <div class="reaction-container text-center position-relative">
+                <!-- Reaction Emojis Container -->
+                <div id="reactionEmojis" class="reaction-emojis">
+                  <span class="emoji" data-reaction="👍">👍</span>
+                  <span class="emoji" data-reaction="👏">👏</span>
+                  <span class="emoji" data-reaction="❤️">❤️</span>
+                  <span class="emoji" data-reaction="😂">😂</span>
+                  <span class="emoji" data-reaction="😮">😮</span>
+                  <span class="emoji" data-reaction="😢">😢</span>
+                </div>
+
+                <!-- Like Button -->
+                <button id="likeButton" class="reaction-btn btn btn-link">
+                  <i class="fas fa-thumbs-up"></i>
+                  <!-- Like icon -->
+                  <span id="selectedReaction">Reaction</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Comment Button -->
+            <div class="col-4 text-secondary interaction">
+              <div class="interaction-item comment-toggle">
+                <i class="fas fa-comment"></i>
+                <span>Comments</span>
+              </div>
+            </div>
+
+            <!-- Favorites -->
+            <div class="col-4 text-secondary interaction">
+              <div class="interaction-item favorite-toggle">
+                <i class="fas fa-heart"></i>
+                <span>Add to Favorites</span>
+              </div>
+            </div>
+
+            <!-- Comment Display -->
+            <div class="container mt-2 comment-section d-none">
+              <div class="row">
+                <div class="col-12">
+                  <!-- Example Comment -->
+                  <div class="comments-container mt-4">
+                    <!-- Dynamic Comments will be inserted here -->
+                  </div>
+                </div>
+                <!-- Add Comment Form -->
+                <div class="col-12 mt-4 pb-2">
+                  <div class="d-flex align-items-start">
+                    <img
+                      src="/assets/images/Profile/Profile Pic.png"
+                      alt="Your Profile Picture"
+                      class="profile-pic"
+                    />
+                    <div class="ms-2 flex-grow-1">
+                      <input
+                        type="text"
+                        class="form-control small-input comment-input"
+                        placeholder="Add a comment..."
+                      />
+                    </div>
+                    <button class="btn post-btn-custom ms-2 add-comment-btn">
+                      <i class="fas fa-paper-plane"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- End Reaction -->
+          </div>
+        </div>
+      </div>
+
+      <!-- End -->
+
+      <!-- Third Card -->
+      <div class="col-md-4 p-3">
+        <div class="card">
+          <!-- Profile -->
+          <div class="container mt-2">
+            <div class="profile-container">
+              <div class="profilepic">
+                <img
+                  src="/assets/images/Profile/Profile Pic.png"
+                  alt="Profile Picture"
+                  width="50px"
+                />
+              </div>
+              <div class="profile-info text-start">
+                <p class="user_name mt-1">
+                  College of Computing and Information Sciences - Caraga State
+                  University
+                </p>
+                <small class="date">October 31, 2024</small>
+              </div>
+            </div>
+          </div>
+          <!--  End Profile -->
+          <div class="container">
+            <div class="row pt-2 pb-">
+              <small class="text-secondary title"
+                >Celebrating Our Achievement! 🎉</small
+              >
+            </div>
+            <div class="row g-0">
+              <div class="col-8 p-1">
+                <img
+                  src="/assets/images/News Feed/8.jpg"
+                  class="img-fluid w-100 h-100"
+                  alt="CCIS Achievement"
+                />
+              </div>
+              <div class="col-4 p-1">
+                <img
+                  src="/assets/images/News Feed/9.jpg"
+                  class="img-fluid w-100 h-100"
+                  alt="CCIS Achievement"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body text-secondary">
+            <p class="card-text cardtext">
+              <span class="preview-text">
+                The College of Computing and Information Sciences (CCIS), Caraga
+                State University - Main Campus, proudly secured the Overall 3rd
+                Runner-Up position! A heartfelt thank you to everyone who made
+                this possible — our dedicated participants, coordinators,
+                working committee members, and the unwavering support of the
+                CCIS faculty and staff.
+              </span>
+              <span class="more-text" style="display: none">
+                Special thanks to the CSU College of Computing and Information
+                Sciences Local Student Government and my co-officers for
+                standing strong through the challenges. Together, we will
+                continue to learn, grow, and face even bigger challenges ahead.
+                Here’s to more events that will elevate the talents and skills
+                of our CCIS students! 🫶🏼
+              </span>
+              <button class="toggle-btn btn btn-link p-0">...See More</button>
+            </p>
+          </div>
+          <!-- Reaction Area -->
+          <div class="row">
+            <div class="container text-secondary">
+              <hr
+                style="
+                  width: 89%;
+                  border-color: #ccc;
+                  border-width: 2px;
+                  margin: 0 auto;
+                "
+              />
+            </div>
+
+            <div class="col-4 interaction">
+              <div class="reaction-container text-center position-relative">
+                <!-- Reaction Emojis Container -->
+                <div id="reactionEmojis" class="reaction-emojis">
+                  <span class="emoji" data-reaction="👍">👍</span>
+                  <span class="emoji" data-reaction="👏">👏</span>
+                  <span class="emoji" data-reaction="❤️">❤️</span>
+                  <span class="emoji" data-reaction="😂">😂</span>
+                  <span class="emoji" data-reaction="😮">😮</span>
+                  <span class="emoji" data-reaction="😢">😢</span>
+                </div>
+
+                <!-- Like Button -->
+                <button id="likeButton" class="reaction-btn btn btn-link">
+                  <i class="fas fa-thumbs-up"></i>
+                  <!-- Like icon -->
+                  <span id="selectedReaction">Reaction</span>
+                </button>
+              </div>
+            </div>
+            <!-- Comment Button -->
+            <div class="col-4 text-secondary interaction">
+              <div class="interaction-item comment-toggle">
+                <i class="fas fa-comment"></i>
+                <span>Comments</span>
+              </div>
+            </div>
+
+            <!-- End Comment -->
+
+            <!-- Favorites -->
+            <div class="col-4 text-secondary interaction">
+              <div class="interaction-item favorite-toggle">
+                <i class="fas fa-heart"></i>
+                <span>Add to Favorites</span>
+              </div>
+            </div>
+
+            <!-- End Favorites -->
+
+            <!-- Comment Display -->
+
+            <!-- Comments Section -->
+            <!-- Comments Section -->
+            <div class="container mt-2 comment-section d-none">
+              <div class="row">
+                <div class="col-12">
+                  <!-- Example Comment -->
+                  <div class="comments-container mt-4">
+                    <!-- Existing Comments -->
+                    <div class="d-flex align-items-start m-2 pb-2 comment">
+                      <img
+                        src="/assets/images/Profile/profile pic 2.jpg"
+                        alt="Profile Picture"
+                        class="profile-pic"
+                      />
+                      <div class="ms-2">
+                        <b class="user_name">John Doe</b>
+                        <p class="comment-text">
+                          Congratulations on this amazing achievement!
+                        </p>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start m-2 mb-2 comment">
+                      <img
+                        src="/assets/images/Profile/profile pic 3.jpg"
+                        alt="Profile Picture"
+                        class="profile-pic"
+                      />
+                      <div class="ms-2">
+                        <b class="user_name">Mike Frost</b>
+                        <p class="comment-text">
+                          Amazing work! Wishing you all the best for the future.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Add Comment Form -->
+                <div class="col-12 mt-4 pb-2">
+                  <div class="d-flex align-items-start">
+                    <img
+                      src="/assets/images/Profile/Profile Pic.png"
+                      alt="Your Profile Picture"
+                      class="profile-pic"
+                    />
+                    <div class="ms-2 flex-grow-1">
+                      <input
+                        type="text"
+                        class="form-control small-input comment-input"
+                        placeholder="Add a comment..."
+                      />
+                    </div>
+                    <button class="btn post-btn-custom ms-2 add-comment-btn">
+                      <i class="fas fa-paper-plane"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- End Comment Display -->
+          </div>
+
+          <!-- End Reaction -->
+        </div>
+      </div>
+      <!-- End Third Card -->
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <!-- </div> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
     <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-    <!-- <script src="/assets/js/index_admin.js" type="module"></script> -->
-    <script src="/assets/js/index_admin2.js" type="module"></script>
-    <script src="/assets/js/newsfeed.js" type="module"></script>
+    <script src="/assets/js/newsfeed.js"></script>
+    <script src="/assets/js/index_admin.js" type="module"></script>
+    <!-- Fuse JS for Search -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+
+
+    <!-- JS NAVBAR -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>
