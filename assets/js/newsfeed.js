@@ -24,97 +24,97 @@ document.addEventListener('contextmenu', function(event) {
     event.preventDefault();
 }, false);
 // REACTION
-document.querySelectorAll(".reaction-btn").forEach(function(likeButton) {
-    const reactionEmojis = likeButton.closest('.interaction').querySelector(".reaction-emojis");
-    const selectedReactionIcon = likeButton.querySelector("i");
+// document.querySelectorAll(".reaction-btn").forEach(function(likeButton) {
+//     const reactionEmojis = likeButton.closest('.interaction').querySelector(".reaction-emojis");
+//     const selectedReactionIcon = likeButton.querySelector("i");
 
-    let pressTimer;
-    let userReaction = ""; // Variable to store the selected reaction
-    let isReactionVisible = false; // Tracks whether the emoji reactions are visible
+//     let pressTimer;
+//     let userReaction = ""; // Variable to store the selected reaction
+//     let isReactionVisible = false; // Tracks whether the emoji reactions are visible
 
-    const emojiToIconClassMap = {
-        "👍": "fas fa-thumbs-up",
-        "❤️": "fas fa-heart",
-        "😂": "fas fa-laugh",
-        "😮": "fas fa-surprise",
-        "😢": "fas fa-sad-tear",
-        "👏": "fas fa-hand-peace"
-    };
+//     const emojiToIconClassMap = {
+//         "👍": "fas fa-thumbs-up",
+//         "❤️": "fas fa-heart",
+//         "😂": "fas fa-laugh",
+//         "😮": "fas fa-surprise",
+//         "😢": "fas fa-sad-tear",
+//         "👏": "fas fa-hand-peace"
+//     };
 
-    likeButton.addEventListener("mousedown", startPress);
-    likeButton.addEventListener("mouseup", cancelPress);
-    likeButton.addEventListener("mouseleave", cancelPress);
+//     likeButton.addEventListener("mousedown", startPress);
+//     likeButton.addEventListener("mouseup", cancelPress);
+//     likeButton.addEventListener("mouseleave", cancelPress);
 
-    // For mobile devices
-    likeButton.addEventListener("touchstart", startPress);
-    likeButton.addEventListener("touchend", cancelPress);
+//     // For mobile devices
+//     likeButton.addEventListener("touchstart", startPress);
+//     likeButton.addEventListener("touchend", cancelPress);
 
-    // Add event listeners for each emoji to save the reaction
-    likeButton.closest('.interaction').querySelectorAll(".emoji").forEach(emoji => {
-        emoji.addEventListener("click", function() {
-            if (userReaction === emoji.textContent) {
-                userReaction = ""; // Reset the reaction
-            } else {
-                userReaction = emoji.textContent; // Get the emoji text
-            }
-            updateReactionUI();
-            hideReactions();
-        });
-    });
+//     // Add event listeners for each emoji to save the reaction
+//     likeButton.closest('.interaction').querySelectorAll(".emoji").forEach(emoji => {
+//         emoji.addEventListener("click", function() {
+//             if (userReaction === emoji.textContent) {
+//                 userReaction = ""; // Reset the reaction
+//             } else {
+//                 userReaction = emoji.textContent; // Get the emoji text
+//             }
+//             updateReactionUI();
+//             hideReactions();
+//         });
+//     });
 
-    // If the Like button is clicked, toggle the reaction
-    likeButton.addEventListener("click", function() {
-        if (isReactionVisible) {
-            hideReactions(); // Hide reactions if they are visible
-        } else if (userReaction !== "") {
-            userReaction = ""; // Reset the reaction if it was already selected
-            updateReactionUI(); // Update the UI to show the default "Like" icon
-        } else {
-            userReaction = "👍"; // Default reaction on a single click
-            updateReactionUI();
-        }
-    });
+//     // If the Like button is clicked, toggle the reaction
+//     likeButton.addEventListener("click", function() {
+//         if (isReactionVisible) {
+//             hideReactions(); // Hide reactions if they are visible
+//         } else if (userReaction !== "") {
+//             userReaction = ""; // Reset the reaction if it was already selected
+//             updateReactionUI(); // Update the UI to show the default "Like" icon
+//         } else {
+//             userReaction = "👍"; // Default reaction on a single click
+//             updateReactionUI();
+//         }
+//     });
 
-    // Hide reactions if clicking outside
-    document.addEventListener("click", function(event) {
-        if (!reactionEmojis.contains(event.target) && event.target !== likeButton) {
-            hideReactions();
-        }
-    });
+//     // Hide reactions if clicking outside
+//     document.addEventListener("click", function(event) {
+//         if (!reactionEmojis.contains(event.target) && event.target !== likeButton) {
+//             hideReactions();
+//         }
+//     });
 
-    function startPress() {
-        // Start the timer for long press (500 ms)
-        pressTimer = setTimeout(() => {
-            showReactions();
-            isReactionVisible = true;
-        }, 500);
-    }
+//     function startPress() {
+//         // Start the timer for long press (500 ms)
+//         pressTimer = setTimeout(() => {
+//             showReactions();
+//             isReactionVisible = true;
+//         }, 500);
+//     }
 
-    function cancelPress() {
-        // Clear the timer if the press is released early
-        clearTimeout(pressTimer);
-    }
+//     function cancelPress() {
+//         // Clear the timer if the press is released early
+//         clearTimeout(pressTimer);
+//     }
 
-    function showReactions() {
-        reactionEmojis.style.display = "flex";
-        isReactionVisible = true;
-    }
+//     function showReactions() {
+//         reactionEmojis.style.display = "flex";
+//         isReactionVisible = true;
+//     }
 
-    function hideReactions() {
-        reactionEmojis.style.display = "none";
-        isReactionVisible = false;
-    }
+//     function hideReactions() {
+//         reactionEmojis.style.display = "none";
+//         isReactionVisible = false;
+//     }
 
-    function updateReactionUI() {
-        if (userReaction) {
-            selectedReactionIcon.className = emojiToIconClassMap[userReaction];
-            selectedReactionIcon.style.color = "#EA8934"; // Orange color for active reaction
-        } else {
-            selectedReactionIcon.className = "fas fa-thumbs-up"; // Default like icon
-            selectedReactionIcon.style.color = ""; // Reset to default color
-        }
-    }
-});
+//     function updateReactionUI() {
+//         if (userReaction) {
+//             selectedReactionIcon.className = emojiToIconClassMap[userReaction];
+//             selectedReactionIcon.style.color = "#EA8934"; // Orange color for active reaction
+//         } else {
+//             selectedReactionIcon.className = "fas fa-thumbs-up"; // Default like icon
+//             selectedReactionIcon.style.color = ""; // Reset to default color
+//         }
+//     }
+// });
 
 
 
@@ -219,7 +219,7 @@ document.getElementById("addCommentBtn").addEventListener("click", function () {
     const commentsContainer = document.getElementById("commentsContainer");
 
     if (commentInput.value.trim() !== "") {
-        // Create a new comment element
+       
         const newComment = document.createElement("div");
         newComment.classList.add("d-flex", "align-items-start", "m-2", "pb-2", "comment");
 
@@ -235,10 +235,9 @@ document.getElementById("addCommentBtn").addEventListener("click", function () {
             </div>
         `;
 
-        // Add the new comment to the container
+       
         commentsContainer.appendChild(newComment);
 
-        // Clear the input
         commentInput.value = "";
     }
 });

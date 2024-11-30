@@ -85,6 +85,7 @@ small.date {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+
 /* STICKY */
 /* Ensure the header stays at the top */
 header.header {
@@ -119,6 +120,14 @@ header.header {
   background-color: #fffaf6 !important;
   border: 1px solid #fffaf6 !important;
 }
+
+/* This Body is For News Page Only */
+#card-body{ 
+  padding: 3px !important;
+  margin-top: 15px !important;
+  margin-bottom: 15px !important;
+}
+
 
 /* See More */
 .toggle-btn {

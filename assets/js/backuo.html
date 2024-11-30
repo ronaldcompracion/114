@@ -1,0 +1,209 @@
+<div class="col-md-4 p-3" id="news-card-${newsItem.id}">
+  <div class="card">
+    <!-- News Content -->
+    <div class="container">
+      <div class="row pt-2">
+        <small class="text-secondary title p-2">${newsItem.title}</small>
+      </div>
+      <div class="row g-0">
+        ${
+          newsItem.img_1
+            ? `<div class="col-12 p-1 text-center">
+              <img src="${newsItem.img_1 || fallbackImage}" class="img-fluid w-100 h-100" alt="${newsItem.title}" />
+            </div>`
+            : `<div class="col-12 p-1 text-center">
+              <img src="${fallbackImage}" class="img-fluid w-100 h-100" alt="Default Placeholder" />
+            </div>`
+        }
+      </div>
+      <div class="card-body text-secondary">
+        <p class="card-text">${newsItem.description}</p>
+      </div>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="container mt-2 comment-section" id="comment-section-${newsItem.id}">
+      <div class="comments-container mt-4">
+        ${commentsWithUserData
+          .map(
+            (comment) => `
+          <div class="d-flex align-items-start m-2 pb-2 comment">
+            <img
+              src="${comment.profile_img}"
+              alt="Profile Picture"
+              class="profile-pic"
+            />
+            <div class="ms-2">
+              <b class="user_name">${comment.f_name} ${comment.l_name}</b>
+              <p class="comment-text">${comment.comment_text}</p>
+            </div>
+          </div>
+        `
+          )
+          .join("")}
+      </div>
+
+      <!-- Add Comment Form -->
+      <div class="col-12 mt-4 pb-2">
+        <div class="d-flex align-items-start">
+          <img
+            src="/assets/images/Profile/Profile Pic.png"
+            alt="Your Profile Picture"
+            class="profile-pic"
+          />
+          <div class="ms-2 flex-grow-1">
+            <input
+              type="text"
+              class="form-control small-input comment-input"
+              placeholder="Add a comment..."
+              id="comment-input-${newsItem.id}"
+            />
+          </div>
+          <button class="btn post-btn-custom ms-2 add-comment-btn" data-news-id="${newsItem.id}">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="col-md-4 p-3" id="news-card-${newsItem.id}">
+  <div class="card">
+      <div class="container mt-2 position-relative">
+          <!-- Profile Container and Content -->
+          <div class="profile-container">
+              <div class="profilepic">
+                  <img src="/assets/images/Profile/Profile Pic.png" alt="Profile Picture" width="50px" />
+              </div>
+              <div class="profile-info text-start">
+                  <p class="user_name mt-1">College of Computing and Information Sciences - Caraga State University</p>
+                  <small class="date"><b>Posted: </b>${new Date(newsItem.created_at).toLocaleDateString()}</small>
+              </div>
+          </div>
+      </div>
+
+      <!-- Content (Images, Title, Description) -->
+      <div class="container">
+          <div class="row pt-2 pb-">
+              <small class="text-secondary title p-2">${newsItem.title}</small>
+          </div>
+          <div class="row g-0">
+              ${
+                  newsItem.img_1 && !newsItem.img_2
+                      ? `<div class="col-12 p-1 text-center">
+                          <img src="${newsItem.img_1 || fallbackImage}" class="img-fluid w-100 h-100" alt="${newsItem.title}" />
+                        </div>`
+                      : newsItem.img_1 && newsItem.img_2
+                      ? `<div class="col-8 p-1">
+                          <img src="${newsItem.img_1 || fallbackImage}" class="img-fluid w-100 h-100" alt="${newsItem.title}" />
+                        </div>
+                        <div class="col-4 p-1">
+                          <img src="${newsItem.img_2 || fallbackImage}" class="img-fluid w-100 h-100" alt="${newsItem.title}" />
+                        </div>`
+                      : `<div class="col-12 p-1 text-center">
+                          <img src="${fallbackImage}" class="img-fluid w-100 h-100" alt="Default Placeholder" />
+                        </div>`
+              }
+          </div>
+          <div class="card-body text-secondary">
+              <p class="card-text">
+                  <span class="preview-text">${newsItem.description.substring(0, 235)}...</span>
+                  <span class="more-text" style="display: none">${newsItem.description}</span>
+                  ${
+                      newsItem.description.length > 235
+                          ? `<button class="toggle-btn btn btn-link p-0">...See More</button>`
+                          : ''
+                  }
+              </p>
+          </div>
+      </div>
+
+      <!-- Reaction Area -->
+      <div class="row">
+          <div class="container text-secondary">
+              <hr style="width: 89%; border-color: #ccc; border-width: 2px; margin: 0 auto;" />
+          </div>
+
+          <div class="col-4 interaction">
+              <div class="reaction-container text-center position-relative">
+                  <div id="reactionEmojis" class="reaction-emojis">
+                      <span class="emoji" data-reaction="👍">👍</span>
+                      <span class="emoji" data-reaction="👏">👏</span>
+                      <span class="emoji" data-reaction="❤️">❤️</span>
+                      <span class="emoji" data-reaction="😂">😂</span>
+                      <span class="emoji" data-reaction="😮">😮</span>
+                      <span class="emoji" data-reaction="😢">😢</span>
+                  </div>
+                  <button id="likeButton" class="reaction-btn btn btn-link">
+                      <i class="fas fa-thumbs-up"></i>
+                      <span id="selectedReaction">Reaction</span>
+                  </button>
+              </div>
+          </div>
+
+          <div class="col-4 text-secondary interaction">
+              <div class="interaction-item comment-toggle" id="comment-toggle-${newsItem.id}">
+                  <i class="fas fa-comment"></i>
+                  <span>Comments (${commentCount})</span>
+              </div>
+          </div>
+
+          <div class="col-4 text-secondary interaction">
+              <div class="interaction-item favorite-toggle">
+                  <i class="fas fa-heart"></i>
+                  <span>Add to Favorites</span>
+              </div>
+          </div>
+      </div>
+
+      <!-- Comment Display (Initially Hidden) -->
+      <div class="container mt-2 comment-section" id="comment-section-${newsItem.id}">
+        <div class="comments-container mt-4">
+          ${commentsWithUserData
+            .map(
+              (comment) => `
+            <div class="d-flex align-items-start m-2 pb-2 comment">
+              <img
+                src="${comment.profile_img}"
+                alt="Profile Picture"
+                class="profile-pic"
+              />
+              <div class="ms-2">
+                <b class="user_name">${comment.f_name} ${comment.l_name}</b>
+                <p class="comment-text">${comment.comment_text}</p>
+              </div>
+            </div>
+          `
+            )
+            .join("")}
+        </div>
+  
+        <!-- Add Comment Form -->
+        <div class="col-12 mt-4 pb-2">
+          <div class="d-flex align-items-start">
+            <img
+              src="/assets/images/Profile/Profile Pic.png"
+              alt="Your Profile Picture"
+              class="profile-pic"
+            />
+            <div class="ms-2 flex-grow-1">
+              <input
+                type="text"
+                class="form-control small-input comment-input"
+                placeholder="Add a comment..."
+                id="comment-input-${newsItem.id}"
+              />
+            </div>
+            <button class="btn post-btn-custom ms-2 add-comment-btn" data-news-id="${newsItem.id}">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

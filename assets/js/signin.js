@@ -39,6 +39,17 @@ signinForm.onsubmit = async (event) => {
             return;
         }
 
+        // Extract user information
+        const user = data[0];
+        const userId = user.id; // Assuming the "id" field exists in the users table
+        const fullName = `${user.f_name} ${user.l_name}`; // Concatenate first name and last name
+        const profileImg = user.profile_img || "/assets/images/Profile/Profile Pic.png"; // Default to a placeholder if no image is provided
+
+        // Store the user information in Local Storage
+        localStorage.setItem("loggedInUserId", userId);
+        localStorage.setItem("loggedInFullName", fullName); // Store full name
+        localStorage.setItem("loggedInProfileImg", profileImg); // Store profile image
+
         // If a match is found, display success notification
         successNotification.style.display = "block";
         setTimeout(() => {
@@ -55,6 +66,8 @@ signinForm.onsubmit = async (event) => {
         alert(`Login failed: ${err.message}`);
     }
 };
+
+
 
 // Hide preloader and show form container on page load
 window.addEventListener("load", function () {
