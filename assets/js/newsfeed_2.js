@@ -6,10 +6,9 @@ const SUPABASE_KEY =
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+let newsData = [];
 async function fetchNews() {
-  try {
-    let newsData = [];
-
+  try { 
     const { data, error } = await supabase.from("News").select("*");
     console.log("Fetched news data:", data);
 
@@ -25,6 +24,7 @@ async function fetchNews() {
 
     // Assign the fetched data to newsData and sort it
     newsData = data.sort((a, b) => b.id - a.id);
+   
 
     const newsContainer = document.getElementById("news-container");
 
@@ -63,7 +63,9 @@ async function fetchNews() {
       // Map comments to include user data
       const commentsWithUserData = (commentsData || []).map((comment) => ({
         ...comment,
-        profile_img: comment.users?.profile_img || "/assets/images/Profile/Profile Pic.png", // Default profile picture if not available
+        profile_img:
+          comment.users?.profile_img ||
+          "/assets/images/Profile/Profile Pic.png", // Default profile picture if not available
         f_name: comment.users?.f_name || "Unknown", // Use placeholder if no first name
         l_name: comment.users?.l_name || "User", // Use placeholder if no last name
       }));
@@ -80,7 +82,9 @@ async function fetchNews() {
                 </div>
                 <div class="profile-info text-start">
                   <p class="user_name mt-1">College of Computing and Information Sciences - Caraga State University</p>
-                  <small class="date"><b>Posted: </b>${new Date(newsItem.created_at).toLocaleDateString()}</small>
+                  <small class="date"><b>Posted: </b>${new Date(
+                    newsItem.created_at
+                  ).toLocaleDateString()}</small>
                 </div>
               </div>
             </div>
@@ -88,20 +92,34 @@ async function fetchNews() {
             <!-- Content (Images, Title, Description) -->
             <div class="container">
               <div class="row pt-2 pb-">
-                <small class="text-secondary title p-2">${newsItem.title}</small>
+                <small class="text-secondary title p-2">${
+                  newsItem.title
+                }</small>
               </div>
               <div class="row g-0">
                 ${
                   newsItem.img_1 && !newsItem.img_2
                     ? `<div class="col-12 p-1 text-center">
-                        <img src="${newsItem.img_1 || fallbackImage}" class="img-fluid w-100 h-100" alt="${newsItem.title}" />
+                        <img src="${
+                          newsItem.img_1 || fallbackImage
+                        }" class="img-fluid w-100 h-100" alt="${
+                        newsItem.title
+                      }" />
                       </div>`
                     : newsItem.img_1 && newsItem.img_2
                     ? `<div class="col-8 p-1">
-                        <img src="${newsItem.img_1 || fallbackImage}" class="img-fluid w-100 h-100" alt="${newsItem.title}" />
+                        <img src="${
+                          newsItem.img_1 || fallbackImage
+                        }" class="img-fluid w-100 h-100" alt="${
+                        newsItem.title
+                      }" />
                       </div>
                       <div class="col-4 p-1">
-                        <img src="${newsItem.img_2 || fallbackImage}" class="img-fluid w-100 h-100" alt="${newsItem.title}" />
+                        <img src="${
+                          newsItem.img_2 || fallbackImage
+                        }" class="img-fluid w-100 h-100" alt="${
+                        newsItem.title
+                      }" />
                       </div>`
                     : `<div class="col-12 p-1 text-center">
                         <img src="${fallbackImage}" class="img-fluid w-100 h-100" alt="Default Placeholder" />
@@ -110,12 +128,17 @@ async function fetchNews() {
               </div>
               <div class="card-body text-secondary " id="card-body">
                 <p class="card-text cardtext">
-                  <span class="preview-text">${newsItem.description.substring(0, 235)}...</span>
-                  <span class="more-text" style="display: none">${newsItem.description}</span>
+                  <span class="preview-text">${newsItem.description.substring(
+                    0,
+                    235
+                  )}...</span>
+                  <span class="more-text" style="display: none">${
+                    newsItem.description
+                  }</span>
                   ${
                     newsItem.description.length > 235
                       ? `<button class="toggle-btn btn btn-link p-0">...See More</button>`
-                      : ''
+                      : ""
                   }
                 </p>
               </div>
@@ -145,7 +168,9 @@ async function fetchNews() {
               </div>
 
               <div class="col-4 text-secondary interaction">
-                <div class="interaction-item comment-toggle" id="comment-toggle-${newsItem.id}">
+                <div class="interaction-item comment-toggle" id="comment-toggle-${
+                  newsItem.id
+                }">
                   <i class="fas fa-comment"></i>
                   <span>Comments (${commentCount})</span>
                 </div>
@@ -160,19 +185,26 @@ async function fetchNews() {
             </div>
 
          <!-- Comment Display (Initially Hidden) -->
-            <div class="container mt-2 comment-section d-none" id="comment-section-${newsItem.id}">
+            <div class="container mt-2 comment-section d-none" id="comment-section-${
+              newsItem.id
+            }">
               <div class="comments-container mt-4">
                 ${commentsWithUserData
                   .map(
                     (comment) => `
                     <div class="d-flex align-items-start m-2 pb-2 comment">
                       <img
-                        src="${comment.profile_img || '/assets/images/Profile/User_pic.png'}"
+                        src="${
+                          comment.profile_img ||
+                          "/assets/images/Profile/User_pic.png"
+                        }"
                         alt="Profile Picture"
                         class="profile-pic"
                       />
                       <div class="ms-2">
-                        <b class="user_name">${comment.f_name} ${comment.l_name}</b>
+                        <b class="user_name">${comment.f_name} ${
+                      comment.l_name
+                    }</b>
                         <p class="comment-text">${comment.comment_text}</p>
                       </div>
                     </div>`
@@ -184,7 +216,10 @@ async function fetchNews() {
               <div class="col-12 mt-4 pb-2">
                 <div class="d-flex align-items-start">
                   <img
-                    src="${localStorage.getItem("loggedInProfileImg") || '/assets/images/Profile/User_pic.png'}"
+                    src="${
+                      localStorage.getItem("loggedInProfileImg") ||
+                      "/assets/images/Profile/User_pic.png"
+                    }"
                     alt="Your Profile Picture"
                     class="profile-pic"
                   />
@@ -196,7 +231,9 @@ async function fetchNews() {
                       id="comment-input-${newsItem.id}"
                     />
                   </div>
-                  <button class="btn post-btn-custom ms-2 add-comment-btn" data-news-id="${newsItem.id}">
+                  <button class="btn post-btn-custom ms-2 add-comment-btn" data-news-id="${
+                    newsItem.id
+                  }">
                     <i class="fas fa-paper-plane"></i>
                   </button>
                 </div>
@@ -211,20 +248,28 @@ async function fetchNews() {
       newsContainer.insertAdjacentHTML("beforeend", newsCard);
 
       // Add comment toggle button listener
-      const commentToggleButton = document.getElementById(`comment-toggle-${newsItem.id}`);
-      const commentSection = document.getElementById(`comment-section-${newsItem.id}`);
+      const commentToggleButton = document.getElementById(
+        `comment-toggle-${newsItem.id}`
+      );
+      const commentSection = document.getElementById(
+        `comment-section-${newsItem.id}`
+      );
       commentToggleButton.addEventListener("click", () => {
         commentSection.classList.toggle("d-none");
       });
 
+      
+
       // Add comment posting functionality
-      const addCommentBtn = document.querySelector(`#comment-section-${newsItem.id} .add-comment-btn`);
+      const addCommentBtn = document.querySelector(
+        `#comment-section-${newsItem.id} .add-comment-btn`
+      );
       addCommentBtn.addEventListener("click", async (e) => {
         const newsId = e.target.getAttribute("data-news-id");
         const commentInput = document.getElementById(`comment-input-${newsId}`);
         const commentText = commentInput.value.trim();
 
-        if (!commentText) return;  // Prevent submitting empty comments
+        if (!commentText) return; // Prevent submitting empty comments
 
         const loggedInFullName = localStorage.getItem("loggedInFullName");
         const loggedInProfileImg = localStorage.getItem("loggedInProfileImg");
@@ -241,16 +286,20 @@ async function fetchNews() {
         }
 
         try {
-          const { data: newComment, error } = await supabase.from("Comments").insert({
-            comment_text: commentText,
-            News_id: newsId,
-            user_id: userId,
-          });
+          const { data: newComment, error } = await supabase
+            .from("Comments")
+            .insert({
+              comment_text: commentText,
+              News_id: newsId,
+              user_id: userId,
+            });
 
           if (error) throw new Error("Failed to save comment.");
 
           // Dynamically update UI with the new comment
-          const commentsContainer = document.querySelector(`#comment-section-${newsId} .comments-container`);
+          const commentsContainer = document.querySelector(
+            `#comment-section-${newsId} .comments-container`
+          );
           commentsContainer.insertAdjacentHTML(
             "beforeend",
             `
@@ -270,7 +319,6 @@ async function fetchNews() {
 
           // Clear the comment input after posting
           commentInput.value = "";
-
         } catch (err) {
           console.error("Error posting comment:", err.message);
         }
@@ -286,19 +334,20 @@ async function fetchNews() {
 // Initial fetch call
 fetchNews();
 
-
 // ADD TO FAVORITES
 async function setupFavoriteToggle(newsItem) {
-  const favoriteToggle = document.querySelector(`#news-card-${newsItem.id} .favorite-toggle`);
+  const favoriteToggle = document.querySelector(
+    `#news-card-${newsItem.id} .favorite-toggle`
+  );
 
   favoriteToggle.addEventListener("click", async () => {
     const loggedInUserId = localStorage.getItem("loggedInUserId");
-  
+
     if (!loggedInUserId) {
       alert("You need to log in to add favorites.");
       return;
     }
-  
+
     try {
       // Check if the news is already in the Favorites table
       const { data: existingFavorite, error: fetchError } = await supabase
@@ -307,12 +356,12 @@ async function setupFavoriteToggle(newsItem) {
         .eq("News_id", newsItem.id)
         .eq("user_id", loggedInUserId)
         .limit(1);
-  
+
       if (fetchError) {
         console.error("Error checking favorite status:", fetchError.message);
         return;
       }
-  
+
       if (existingFavorite && existingFavorite.length > 0) {
         // If already a favorite, remove it
         const { error: deleteError } = await supabase
@@ -320,26 +369,24 @@ async function setupFavoriteToggle(newsItem) {
           .delete()
           .eq("News_id", newsItem.id)
           .eq("user_id", loggedInUserId);
-  
+
         if (deleteError) {
           throw new Error("Failed to remove from favorites.");
         }
-  
+
         alert("News item removed from your favorites!");
         favoriteToggle.querySelector("i").style.color = ""; // Reset to default color
       } else {
         // Otherwise, add it as a favorite
-        const { error: insertError } = await supabase
-          .from("Favorites")
-          .insert({
-            user_id: loggedInUserId,
-            News_id: newsItem.id,
-          });
-  
+        const { error: insertError } = await supabase.from("Favorites").insert({
+          user_id: loggedInUserId,
+          News_id: newsItem.id,
+        });
+
         if (insertError) {
           throw new Error("Failed to add to favorites.");
         }
-  
+
         alert("News item added to your favorites!");
         favoriteToggle.querySelector("i").style.color = "#fd7e14"; // Apply the custom color
       }
@@ -347,13 +394,9 @@ async function setupFavoriteToggle(newsItem) {
       console.error("Error toggling favorite:", err.message);
     }
   });
-  
 }
 
-
-
-
-// FETCH FAVORITES 
+// FETCH FAVORITES
 async function fetchFavoritesAndUpdateUI() {
   const loggedInUserId = localStorage.getItem("loggedInUserId");
 
@@ -379,7 +422,9 @@ async function fetchFavoritesAndUpdateUI() {
 
       // Update the UI for each favorite news item
       favoriteNewsIds.forEach((newsId) => {
-        const favoriteToggle = document.querySelector(`#news-card-${newsId} .favorite-toggle`);
+        const favoriteToggle = document.querySelector(
+          `#news-card-${newsId} .favorite-toggle`
+        );
         if (favoriteToggle) {
           // Apply color using inline styles
           favoriteToggle.querySelector("i").style.color = "#fd7e14";
@@ -391,40 +436,29 @@ async function fetchFavoritesAndUpdateUI() {
   }
 }
 
-
-
-
-
-
-  
-
-
 //   NEWS SEE MORE TOGGLE
 
-document.addEventListener("click", function(event) {
-    if (event.target && event.target.matches(".toggle-btn")) {
-        const toggleBtn = event.target;
-        const card = toggleBtn.closest(".card");  // Find the closest card element
-        const moreText = card.querySelector(".more-text");
-        const previewText = card.querySelector(".preview-text");
+document.addEventListener("click", function (event) {
+  if (event.target && event.target.matches(".toggle-btn")) {
+    const toggleBtn = event.target;
+    const card = toggleBtn.closest(".card"); // Find the closest card element
+    const moreText = card.querySelector(".more-text");
+    const previewText = card.querySelector(".preview-text");
 
-        if (moreText.style.display === "none") {
-            moreText.style.display = "inline";   // Show the full text
-            previewText.style.display = "inline"; // Keep the preview text displayed
-            toggleBtn.textContent = "See Short"; // Change button text to "See Short"
-        } else {
-            moreText.style.display = "none";      // Hide the full text
-            previewText.style.display = "inline"; // Show only the preview text
-            toggleBtn.textContent = "See More";   // Change button text back to "See More"
-        }
+    if (moreText.style.display === "none") {
+      moreText.style.display = "inline"; // Show the full text
+      previewText.style.display = "inline"; // Keep the preview text displayed
+      toggleBtn.textContent = "See Short"; // Change button text to "See Short"
+    } else {
+      moreText.style.display = "none"; // Hide the full text
+      previewText.style.display = "inline"; // Show only the preview text
+      toggleBtn.textContent = "See More"; // Change button text back to "See More"
     }
+  }
 });
 // END SEE MORE TOGGLE
 
-
-
-// REACTION 
-
+// REACTION
 // Reactions for dynamically fetched content
 document.addEventListener("click", function (event) {
   // Check if the reaction button was clicked
@@ -487,7 +521,115 @@ document.addEventListener("click", function (event) {
     }
   }
 });
-
-
-
 // END REACTION
+
+// SEARCH FUNCTION
+
+// Search function to filter news items
+function searchNews(query) {
+  // Remove empty spaces and make it lowercase for case-insensitive search
+  const searchQuery = query.toLowerCase().trim();
+
+  // Filter newsData based on the search query (searching in title and description)
+  const results = newsData.filter(
+    (newsItem) =>
+      newsItem.title.toLowerCase().includes(searchQuery) ||
+      newsItem.description.toLowerCase().includes(searchQuery)
+  );
+
+  // Show matching results in dropdown
+  displaySearchSuggestions(results);
+}
+
+// Function to display search suggestions in the dropdown
+function displaySearchSuggestions(results) {
+  const suggestionsContainer = document.getElementById("search-suggestions");
+  suggestionsContainer.innerHTML = ""; // Clear previous suggestions
+
+  if (results.length === 0) {
+    suggestionsContainer.style.display = "none"; // Hide dropdown if no results
+    return;
+  }
+
+  // Display each result in the dropdown
+  results.forEach((newsItem) => {
+    const suggestionItem = document.createElement("li");
+    suggestionItem.classList.add("list-group-item");
+    suggestionItem.textContent = newsItem.title;
+
+    // When a suggestion is clicked, fetch and display the full news content in a modal
+    suggestionItem.addEventListener("click", async () => {
+      // Fetch the detailed content of the selected news item
+      const { data: newsData, error } = await supabase
+        .from("News")
+        .select("*")
+        .eq("id", newsItem.id)
+        .single(); // Fetch a single item
+
+      if (error) {
+        console.error("Error fetching news data:", error);
+        return;
+      }
+
+      // Populate modal with news details
+      const modalContent = document.getElementById("modal-content");
+      modalContent.innerHTML = `
+      <h3>${newsItem.title}</h3>
+      <div class="row g-0 my-3">
+        ${
+          newsItem.img_1 && !newsItem.img_2
+            ? `<div class="col-12 p-1 text-center">
+                <img src="${
+                  newsItem.img_1 || "/assets/images/default-placeholder.png"
+                }" class="img-fluid w-100 h-100" alt="News Image 1" />
+              </div>`
+            : newsItem.img_1 && newsItem.img_2
+            ? `<div class="col-8 p-1">
+                <img src="${
+                  newsItem.img_1 || "/assets/images/default-placeholder.png"
+                }" class="img-fluid w-100 h-100" alt="News Image 1" />
+              </div>
+              <div class="col-4 p-1">
+                <img src="${
+                  newsItem.img_2 || "/assets/images/default-placeholder.png"
+                }" class="img-fluid w-100 h-100" alt="News Image 2" />
+              </div>`
+            : `<div class="col-12 p-1 text-center">
+                <img src="/assets/images/default-placeholder.png" class="img-fluid w-100 h-100" alt="Default Placeholder" />
+              </div>`
+        }
+      </div>
+      <p>${newsItem.description}</p>
+
+     
+    `;
+    
+
+      // Show the modal
+      const modal = new bootstrap.Modal(document.getElementById("newsModal"));
+      modal.show();
+
+      // Hide the suggestions dropdown after selection
+      suggestionsContainer.style.display = "none";
+    });
+
+    suggestionsContainer.appendChild(suggestionItem);
+  });
+
+  // Show the suggestions dropdown
+  suggestionsContainer.style.display = "block";
+}
+
+// Add event listener for search input
+document.getElementById("search-input").addEventListener("input", function () {
+  const query = this.value;
+  searchNews(query); // Call the search function each time the user types
+});
+
+// Optionally, clear the suggestions when the input is focused out
+document.getElementById("search-input").addEventListener("blur", () => {
+  setTimeout(() => {
+    // Timeout ensures the suggestion can be clicked
+    document.getElementById("search-suggestions").style.display = "none";
+  }, 200);
+});

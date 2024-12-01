@@ -161,14 +161,24 @@ function renderAnnouncements(announcements, containerId, tableName) {
 
 
 // Save the announcement to the calendar
+// Save the announcement to the calendar
 async function saveToCalendar() {
   const announcementId = document.getElementById("saveButton").getAttribute("data-id");
   const tableName = document.getElementById("saveButton").getAttribute("data-table");
   const selectedDate = document.getElementById("modal-date-input").value; // Get the selected date from the modal
   const selectedTime = document.getElementById("time").value; // Get the selected time from the modal
 
+  // Retrieve the user_id from local storage
+  const userId = localStorage.getItem("loggedInUserId");
+
   if (!selectedDate || !selectedTime) {
     alert("Please select a date and time.");
+    return;
+  }
+
+  // Check if userId is present in localStorage
+  if (!userId) {
+    alert("User is not logged in. Please log in to save to the calendar.");
     return;
   }
 
@@ -183,7 +193,7 @@ async function saveToCalendar() {
       foreignKeyField = "old_id";
     }
 
-    // Insert the data into the Calendar table
+    // Insert the data into the Calendar table, including the user_id
     const { error } = await supabase
       .from("Calendar") // Calendar table
       .insert([
@@ -191,21 +201,23 @@ async function saveToCalendar() {
           [foreignKeyField]: announcementId, // Set the appropriate foreign key
           date: selectedDate,
           time: selectedTime,
+          user_id: userId, // Add the user_id from localStorage
         }
       ]);
 
     if (error) throw error;
 
-    // alert("Saved successfully to the calendar!");
-
     // Close the modal after saving
     $("#addToCalendarModal").modal("hide");
+
+    alert("Saved successfully to the calendar!");
 
   } catch (error) {
     console.error("Error saving to calendar:", error);
     alert("Failed to save to calendar.");
   }
 }
+
 
 // Add event listener for the save button to trigger the saveToCalendar function
 document.getElementById("saveButton").addEventListener("click", saveToCalendar);
@@ -399,3 +411,6 @@ handleSearchAcrossTables("search-input", "search-suggestions");
 document.querySelector(".close-btn").addEventListener("click", () => {
   document.querySelector(".modal-overlay").classList.add("hidden");
 });
+
+
+

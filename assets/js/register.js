@@ -6,6 +6,7 @@ const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const signupForm = document.getElementById("signupForm");
+const notification = document.getElementById("notification");
 
 signupForm.onsubmit = async (event) => {
   event.preventDefault();
@@ -17,8 +18,13 @@ signupForm.onsubmit = async (event) => {
   const password = document.getElementById("password").value;
   const confirmpassword = document.getElementById("confirmpassword").value;
 
+  // Clear notification
+  notification.textContent = "";
+  notification.className = "notification";
+  notification.style.display = "none";
+
   if (password !== confirmpassword) {
-    alert("Passwords do not match.");
+    showNotification("Passwords do not match.", "error");
     return;
   }
 
@@ -37,28 +43,18 @@ signupForm.onsubmit = async (event) => {
 
     // Step 2: Calculate the new ID
     const nextId = maxIdData.length > 0 ? maxIdData[0].id + 1 : 1;
-    console.log("Next ID:", nextId);
 
-    // Step 3: Insert the new user with the calculated ID
-    console.log("Inserting data with the following payload:");
-    console.log({
-      id: nextId,
-      email,
-      password,
-      f_name: firstname,
-      l_name: lastname,
-      id_number: idnumber,
-    });
-
+    // Step 3: Insert the new user with the calculated ID and "user" role
     const { data, error } = await supabase
       .from("users")
-      .insert([{ 
-        id: nextId, 
-        email, 
-        password, 
-        f_name: firstname, 
-        l_name: lastname, 
-        id_number: idnumber 
+      .insert([{
+        id: nextId,
+        email,
+        password,
+        f_name: firstname,
+        l_name: lastname,
+        id_number: idnumber,
+        role: "user" // Automatically setting the role
       }]);
 
     if (error) {
@@ -66,10 +62,23 @@ signupForm.onsubmit = async (event) => {
       throw new Error("Error inserting user details into the users table.");
     }
 
-    alert("Account created successfully!");
+    // Success notification
+    showNotification("Account created successfully!", "success");
     signupForm.reset();
   } catch (err) {
+    // Error notification
     console.error("Registration Error:", err);
-    alert(`Registration failed: ${err.message}`);
+    showNotification(`Registration failed: ${err.message}`, "error");
   }
 };
+
+/**
+ * Displays a notification message on the UI.
+ * @param {string} message - The message to display.
+ * @param {string} type - The type of notification ('success' or 'error').
+ */
+function showNotification(message, type) {
+  notification.textContent = message;
+  notification.className = `notification ${type}`;
+  notification.style.display = "block";
+}

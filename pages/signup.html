@@ -38,16 +38,15 @@
             <button type="submit" class="btn btn-primary btn-block mt-3">Sign Up</button>
             <a href="signin.html" class="sign-in-link">Already have an account? Sign in</a>
         </form>
-        <div id="successNotification" class="notification">
-            Account Created Successfully
-        </div>
+       
+        
     </div>
-    
+    <div id="notification" class="notification text-center" style="display: none;"></div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="module" src="/assets/js/register.js"></script>
-
+<!-- 
     <script>
         document.getElementById('signupForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -59,6 +58,6 @@
                 notification.style.display = 'none';
             }, 3000);
         });
-    </script>
+    </script> -->
 </body>
 </html>

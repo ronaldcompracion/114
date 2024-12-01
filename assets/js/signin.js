@@ -13,9 +13,13 @@ signinForm.onsubmit = async (event) => {
     const idnumber = document.getElementById("id-number").value;
     const password = document.getElementById("password").value;
 
-    const successNotification = document.getElementById("successNotification");
-    const errorNotification = document.getElementById("errorNotification");
+    const notification = document.getElementById("notification");
     const preloader = document.getElementById("preloader");
+
+    // Reset notifications
+    notification.textContent = "";
+    notification.className = "notification";
+    notification.style.display = "none";
 
     try {
         // Query the users table to find a matching id_number and password
@@ -32,42 +36,78 @@ signinForm.onsubmit = async (event) => {
 
         if (data.length === 0) {
             // Display error notification for invalid credentials
-            errorNotification.style.display = "block";
-            setTimeout(() => {
-                errorNotification.style.display = "none";
-            }, 3000);
+            showNotification("Invalid ID number or password.", "error");
             return;
         }
 
         // Extract user information
         const user = data[0];
-        const userId = user.id; // Assuming the "id" field exists in the users table
-        const fullName = `${user.f_name} ${user.l_name}`; // Concatenate first name and last name
-        const profileImg = user.profile_img || "/assets/images/Profile/Profile Pic.png"; // Default to a placeholder if no image is provided
+        const role = user.role; // Role field
+        const userId = user.id;
+        const fullName = `${user.f_name} ${user.l_name}`;
+        const profileImg = user.profile_img || "/assets/images/Profile/Profile Pic.png";
 
         // Store the user information in Local Storage
         localStorage.setItem("loggedInUserId", userId);
-        localStorage.setItem("loggedInFullName", fullName); // Store full name
-        localStorage.setItem("loggedInProfileImg", profileImg); // Store profile image
+        localStorage.setItem("loggedInFullName", fullName);
+        localStorage.setItem("loggedInProfileImg", profileImg);
+        localStorage.setItem("loggedInRole", role);
 
-        // If a match is found, display success notification
-        successNotification.style.display = "block";
-        setTimeout(() => {
-            successNotification.style.display = "none";
-            preloader.style.display = "flex"; // Show preloader after success notification
+        // Redirect based on role
+        if (role === "admin") {
+            showNotification("Welcome Admin! Redirecting to admin dashboard...", "success");
 
-            // Redirect after a brief delay to allow the preloader to be visible
             setTimeout(() => {
-                window.location.href = "/pages/index.html"; // Redirect on success
+                window.location.href = "/pages/index_admin.html";
             }, 2000);
-        }, 2000); // Delay for success notification
+        } else if (role === "user") {
+            showNotification("Welcome User! Redirecting...", "success");
+
+            setTimeout(() => {
+                window.location.href = "/pages/News.html";
+            }, 2000);
+        } else {
+            throw new Error("Invalid role detected.");
+        }
     } catch (err) {
         console.error("Login Error:", err);
-        alert(`Login failed: ${err.message}`);
+        showNotification(`Login failed: ${err.message}`, "error");
     }
 };
 
+// Display a notification
+function showNotification(message, type) {
+    const notification = document.getElementById("notification");
+    notification.textContent = message;
+    notification.className = `notification ${type}`;
+    notification.style.display = "block";
 
+    // Auto-hide notification after 3 seconds
+    setTimeout(() => {
+        notification.style.display = "none";
+    }, 3000);
+}
+
+// Restrict unauthorized access based on role
+function restrictAccess() {
+    const role = localStorage.getItem("loggedInRole");
+
+    const adminPages = ["/pages/index_admin.html"];
+    const userPages = ["/pages/Announcement.html", "/pages/News.html", "/pages/Profile.html", "/pages/Settings.html"];
+
+    const currentPage = window.location.pathname;
+
+    if (role === "admin" && userPages.includes(currentPage)) {
+        alert("Admins cannot access user pages.");
+        window.location.href = "/pages/index_admin.html";
+    } else if (role === "user" && adminPages.includes(currentPage)) {
+        alert("Users cannot access admin pages.");
+        window.location.href = "/pages/News.html";
+    }
+}
+
+// Call restrictAccess on every page load
+window.addEventListener("load", restrictAccess);
 
 // Hide preloader and show form container on page load
 window.addEventListener("load", function () {

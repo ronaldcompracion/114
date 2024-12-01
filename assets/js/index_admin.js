@@ -396,7 +396,6 @@ document
 // SEARCH FUNCTION
 
 // Search function to filter news items
-// Search function to filter news items
 function searchNews(query) {
   // Remove empty spaces and make it lowercase for case-insensitive search
   const searchQuery = query.toLowerCase().trim();
@@ -446,26 +445,34 @@ function displaySearchSuggestions(results) {
       const modalContent = document.getElementById("modal-content");
       modalContent.innerHTML = `
       <h3>${newsItem.title}</h3>
-      <p>${newsItem.description}</p>
-      <div class="row g-2 my-3">
-        <div class="col-8">
-          <img src="${
-            newsItem.img_1 || "/assets/images/default-placeholder.png"
-          }" class="img-fluid w-100" alt="News Image 1" />
-        </div>
-        <div class="col-4">
-          <img src="${
-            newsItem.img_2 || "/assets/images/default-placeholder.png"
-          }" class="img-fluid w-100 h-100" alt="News Image 2" />
-        </div>
+      <div class="row g-0 my-3">
+        ${
+          newsItem.img_1 && !newsItem.img_2
+            ? `<div class="col-12 p-1 text-center">
+                <img src="${
+                  newsItem.img_1 || "/assets/images/default-placeholder.png"
+                }" class="img-fluid w-100 h-100" alt="News Image 1" />
+              </div>`
+            : newsItem.img_1 && newsItem.img_2
+            ? `<div class="col-8 p-1">
+                <img src="${
+                  newsItem.img_1 || "/assets/images/default-placeholder.png"
+                }" class="img-fluid w-100 h-100" alt="News Image 1" />
+              </div>
+              <div class="col-4 p-1">
+                <img src="${
+                  newsItem.img_2 || "/assets/images/default-placeholder.png"
+                }" class="img-fluid w-100 h-100" alt="News Image 2" />
+              </div>`
+            : `<div class="col-12 p-1 text-center">
+                <img src="/assets/images/default-placeholder.png" class="img-fluid w-100 h-100" alt="Default Placeholder" />
+              </div>`
+        }
       </div>
-      <p><strong>Author:</strong> ${newsItem.author_name || "Unknown"}</p>
-      <p><strong>Published:</strong> ${
-        newsItem.published_at
-          ? new Date(newsItem.published_at).toLocaleDateString()
-          : "Not available"
-      }</p>
+      <p>${newsItem.description}</p>
+    
     `;
+    
 
       // Show the modal
       const modal = new bootstrap.Modal(document.getElementById("newsModal"));
