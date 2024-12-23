@@ -237,6 +237,7 @@ function addNewsCardToDOM(newsItem) {
             <div class="dropdown">
               <button class="btn btn-link p-0 text-dark" id="optionsMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-ellipsis-h"></i>
+               
               </button>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="optionsMenuButton">
                 <li><div class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editModal">Edit</div></li>
@@ -381,3 +382,58 @@ document
       console.error("Unexpected error in deleteNews:", err);
     }
   }
+
+
+  // Function to load the specific announcement details into the modal
+async function showAnnouncementModal(announcementId) {
+  // Fetch the announcement details from the database
+  const { data, error } = await supabase
+    .from('Calendar')
+    .select('id, New(title, description), Pinned(title, description), Old(title, description), date')
+    .eq('id', announcementId)
+    .single(); // Assuming you only need one result
+
+  if (error) {
+    console.error('Error fetching announcement details:', error);
+    return;
+  }
+
+  // Determine the correct title and description
+  const title = data.New?.title || data.Pinned?.title || data.Old?.title || 'Unknown Announcement';
+  const description = data.New?.description || data.Pinned?.description || data.Old?.description || 'No description available.';
+  const date = data.date || 'Unknown Date';
+
+  // Populate the modal with the announcement details
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-description').textContent = description;
+  document.getElementById('modal-date').textContent = `Date: ${date}`;
+
+  // Show the modal
+  const modal = document.getElementById('announcement-modal');
+  modal.classList.remove('hidden');
+}
+
+// Function to hide the modal
+function closeModal() {
+  const modal = document.getElementById('announcement-modal');
+  modal.classList.add('hidden');
+}
+
+// Function to initialize click events for announcement cards
+function initializeAnnouncementCards() {
+  const announcementCards = document.querySelectorAll('.announcement-card');
+
+  announcementCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const announcementId = card.dataset.id; // Get the ID from the card's data-id attribute
+      showAnnouncementModal(announcementId); // Show the modal with the clicked announcement details
+    });
+  });
+
+  // Add event listener to close button
+  const closeButton = document.getElementById('close-modal-btn');
+  closeButton.addEventListener('click', closeModal);
+}
+
+// Initialize the click events when the page is ready
+document.addEventListener('DOMContentLoaded', initializeAnnouncementCards);

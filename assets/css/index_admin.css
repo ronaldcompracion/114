@@ -375,3 +375,12 @@
   color: #666;
   font-size: 13px;
 }
+
+#optionsMenuButton{
+  color:#ed5500;
+}
+
+.fa-ellipsis-h{
+  color: #ed5500;
+  font-size: 15px;
+}
